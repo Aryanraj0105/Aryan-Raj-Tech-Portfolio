@@ -1,9 +1,9 @@
 <<<<<<< HEAD
-# Welcome to your Lovable project
+# Welcome to Aryan Raj Tech Portfolio
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/a01ac717-721f-436f-8102-174254058863
+**URL**: https://aryan-raj-tech-portfolio.vercel.app/
 
 ## How can I edit this code?
 
