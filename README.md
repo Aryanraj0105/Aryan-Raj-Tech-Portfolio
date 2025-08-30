@@ -57,7 +57,6 @@ Use Vercel and click on Deploy -> https://aryan-raj-tech-portfolio.vercel.app/.
 
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
 =======
 # Aryan-Raj-Portfolio
 >>>>>>> 34d505ab227f77cf1af98ba934f5573cdf8e13e4
