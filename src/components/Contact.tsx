@@ -37,7 +37,7 @@ const Contact = () => {
     {
       icon: Linkedin,
       label: 'LinkedIn',
-      href: 'www.linkedin.com/in/aryan-raj-arm0105',
+      href: 'https://www.linkedin.com/in/aryan-raj-arm0105',
       username: 'Aryan Raj'
     }
   ];
@@ -70,7 +70,10 @@ const Contact = () => {
               {contactInfo.map((info) => {
                 const Icon = info.icon;
                 return (
-                  <Card key={info.label} className="p-6 hover-lift transition-smooth">
+                  <Card 
+                    key={info.label} 
+                    className="p-6 hover-lift transition-smooth bg-white dark:bg-gray-900 border border-border"
+                  >
                     <a 
                       href={info.href}
                       className="flex items-center space-x-4 group"
@@ -97,7 +100,10 @@ const Contact = () => {
                 {socialLinks.map((social) => {
                   const Icon = social.icon;
                   return (
-                    <Card key={social.label} className="p-4 hover-lift transition-smooth">
+                    <Card 
+                      key={social.label} 
+                      className="p-4 hover-lift transition-smooth bg-white dark:bg-gray-900 border border-border"
+                    >
                       <a 
                         href={social.href}
                         target="_blank"
@@ -119,27 +125,30 @@ const Contact = () => {
             </div>
 
             {/* Download CV */}
-            <Card className="p-6 bg-gradient-accent">
+            <Card className="p-6 bg-gradient-to-r from-orange-400 to-orange-500 text-white dark:from-orange-600 dark:to-orange-700">
               <div className="text-center">
-                <h4 className="text-lg font-semibold mb-3 text-secondary-foreground">
+                <h4 className="text-lg font-semibold mb-3">
                   Interested in my background?
                 </h4>
-                <p className="text-secondary-foreground/80 mb-4 text-sm">
+                <p className="mb-4 text-sm">
                   Download my detailed resume for a comprehensive overview
                 </p>
                 <Button 
                   variant="secondary" 
-                  className="bg-white text-secondary hover:bg-white/90"
+                  className="bg-white text-orange-600 hover:bg-gray-100"
+                  asChild
                 >
-                  <Download className="mr-2 h-4 w-4" />
-                  Download Resume
+                  <a href="/resume.pdf" download>
+                    <Download className="mr-2 h-4 w-4" />
+                    Download Resume
+                  </a>
                 </Button>
               </div>
             </Card>
           </div>
 
           {/* Contact Form */}
-          <Card className="p-8 bg-gradient-card">
+          <Card className="p-8 bg-white dark:bg-gray-900 border border-border">
             <h3 className="text-2xl font-heading font-semibold mb-6">Send a Message</h3>
             
             <form className="space-y-6">
@@ -168,7 +177,7 @@ const Contact = () => {
                 />
               </div>
 
-              <Button type="submit" size="lg" className="w-full bg-gradient-hero hover:shadow-glow transition-smooth">
+              <Button type="submit" size="lg" className="w-full bg-gradient-to-r from-primary to-purple-500 hover:shadow-glow transition-smooth text-white">
                 <Send className="mr-2 h-5 w-5" />
                 Send Message
               </Button>

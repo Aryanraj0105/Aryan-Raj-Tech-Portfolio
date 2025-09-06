@@ -32,18 +32,25 @@ const Header = () => {
   ];
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-smooth ${
-      isScrolled 
-        ? 'bg-background/80 backdrop-blur-lg border-b border-border shadow-custom' 
-        : 'bg-transparent'
-    }`}>
-      <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-smooth ${
+        isScrolled
+          ? 'bg-background/80 backdrop-blur-lg border-b border-border shadow-custom'
+          : 'bg-transparent'
+      }`}
+    >
+      <nav className="container mx-auto px-4 h-20 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-gradient-hero rounded-lg flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-lg">AR</span>
-          </div>
-          <span className="font-heading font-bold text-xl">Aryan Raj</span>
+        <div
+          className="flex items-center space-x-4 cursor-pointer"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
+          <img
+            src="/My_Photos/arlogo.png"
+            alt="AR Logo"
+            className="w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-lg hover:scale-110 transition-transform duration-300"
+          />
+          <span className="font-heading font-bold text-2xl">Aryan Raj</span>
         </div>
 
         {/* Desktop Navigation */}
@@ -66,7 +73,7 @@ const Header = () => {
             return (
               <Button key={social.label} variant="ghost" size="sm" asChild>
                 <a href={social.href} target="_blank" rel="noopener noreferrer">
-                  <Icon size={18} />
+                  <Icon size={20} />
                 </a>
               </Button>
             );
@@ -82,7 +89,7 @@ const Header = () => {
             size="sm"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
           </Button>
         </div>
       </nav>
@@ -108,7 +115,7 @@ const Header = () => {
                   return (
                     <Button key={social.label} variant="ghost" size="sm" asChild>
                       <a href={social.href} target="_blank" rel="noopener noreferrer">
-                        <Icon size={18} />
+                        <Icon size={20} />
                       </a>
                     </Button>
                   );

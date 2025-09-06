@@ -9,11 +9,39 @@ const Hero = () => {
       <div className="absolute top-1/4 right-1/4 w-72 h-72 bg-primary/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-secondary/10 rounded-full blur-3xl"></div>
 
+      {/* Reflection Text Behind Profile Pic */}
+      <span
+        className="
+          absolute
+          top-1/3 left-1/2
+          -translate-x-1/2 -translate-y-[40%]
+          text-[50px] sm:text-[80px] md:text-[120px] lg:text-[160px]
+          font-extrabold tracking-widest
+          text-black/10 dark:text-white/10
+          drop-shadow-2xl
+          whitespace-nowrap
+          pointer-events-none select-none
+          z-0
+        "
+      >
+        𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫
+      </span>
+
       <div className="container mx-auto px-4 text-center relative z-10">
         <div className="animate-fade-in">
-          {/* Profile Image Placeholder */}
-          <div className="w-32 h-32 mx-auto mb-8 bg-gradient-hero rounded-full flex items-center justify-center shadow-glow">
-            <span className="text-4xl font-bold text-primary-foreground">AR</span>
+          {/* Profile Image with Neon Glow + Halo */}
+          <div className="relative mx-auto mb-8 w-56 h-56 md:w-64 md:h-64">
+            {/* Halo Glow */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-40 blur-3xl animate-pulse"></div>
+            
+            {/* Profile Pic */}
+            <div className="relative w-full h-full rounded-full overflow-hidden shadow-2xl animate-neon-glow">
+              <img
+                src="/My_Photos/Aryan Raj formal Pic.png"
+                alt="Aryan Raj"
+                className="w-full h-full object-cover rounded-full"
+              />
+            </div>
           </div>
 
           {/* Greeting */}
@@ -41,16 +69,35 @@ const Hero = () => {
             and building impactful technology that makes a difference.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-scale-in">
-            <Button size="lg" className="group bg-gradient-hero hover:shadow-glow transition-smooth">
-              <Mail className="mr-2 h-5 w-5" />
-              Get In Touch
-            </Button>
-            <Button variant="outline" size="lg" className="group hover-lift transition-smooth">
-              <Download className="mr-2 h-5 w-5" />
-              Download CV
-            </Button>
+          {/* CTA Buttons (Aligned & Connected) */}
+          <div className="flex justify-center items-center animate-scale-in">
+            {/* Get In Touch */}
+            <a href="#contact">
+              <Button 
+                size="lg" 
+                className="group bg-gradient-hero hover:shadow-glow transition-smooth rounded-l-full rounded-r-none"
+              >
+                <Mail className="mr-2 h-5 w-5" />
+                Get In Touch
+              </Button>
+            </a>
+
+            {/* Download CV */}
+            <a 
+              href="/Aryan Raj_resume.pdf" 
+              download="Aryan_Raj_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="group hover-lift transition-smooth rounded-r-full rounded-l-none border-l-0"
+              >
+                <Download className="mr-2 h-5 w-5" />
+                Download CV
+              </Button>
+            </a>
           </div>
 
           {/* Scroll Indicator */}
@@ -83,6 +130,28 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      {/* Neon Glow Animation */}
+      <style>
+        {`
+          @keyframes neonPulse {
+            0% {
+              box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #00ffff;
+            }
+            50% {
+              box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff, 0 0 80px #ff00ff;
+            }
+            100% {
+              box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 40px #00ffff;
+            }
+          }
+
+          .animate-neon-glow {
+            animation: neonPulse 3s infinite ease-in-out;
+            border-radius: 9999px;
+          }
+        `}
+      </style>
     </section>
   );
 };

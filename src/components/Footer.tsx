@@ -91,8 +91,8 @@ const Footer = () => {
         {/* Bottom Footer */}
         <div className="py-6 border-t border-border flex flex-col md:flex-row justify-between items-center">
           <p className="text-muted-foreground text-sm">
-            © {currentYear} Aryan Raj. Made with{' '}
-            <Heart className="inline h-4 w-4 text-red-500 mx-1" />
+            © {currentYear} Aryan Raj. Made {' '}
+            {/* <Heart className="inline h-4 w-4 text-red-500 mx-1" /> */}
             using React & Tailwind CSS
           </p>
           

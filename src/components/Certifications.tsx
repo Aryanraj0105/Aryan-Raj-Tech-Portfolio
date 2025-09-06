@@ -114,7 +114,7 @@ const Certifications = () => {
               <div className="text-sm text-muted-foreground">Technology Domains</div>
             </div>
             <div className="space-y-2">
-              <div className="text-3xl font-bold text-primary">2024-25</div>
+              <div className="text-3xl font-bold text-primary">2023-25</div>
               <div className="text-sm text-muted-foreground">Recent Achievements</div>
             </div>
           </div>

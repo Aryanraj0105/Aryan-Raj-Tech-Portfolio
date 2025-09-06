@@ -1,8 +1,12 @@
+import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Trophy, Award, Star, Calendar, Users, BookOpen } from 'lucide-react';
+import { Trophy, Award, Star, Calendar, Users, X } from 'lucide-react';
 
 const Achievements = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   const academicAchievements = [
     {
       title: 'Super Achiever Award',
@@ -10,8 +14,7 @@ const Achievements = () => {
       year: '2024',
       category: 'Academic Excellence',
       icon: Trophy,
-      image: '/lovable-uploads/beeefb0d-aa20-43b0-b723-b42b0c68fb32.png'
-      
+      image: '/My_Photos/Super Achiever Award.png'
     },
     {
       title: 'Frontend Development Project Award',
@@ -19,7 +22,7 @@ const Achievements = () => {
       year: '2024',
       category: 'Project Excellence',
       icon: Award,
-      image: '/lovable-uploads/a66c7b05-b1d7-49b4-abf6-43b9f0cec523.png'
+      image: '/My_Photos/Frontend Development Project Award.png'
     },
     {
       title: '3rd Place in Mathematical Competition',
@@ -27,7 +30,7 @@ const Achievements = () => {
       year: '2023',
       category: 'Academic Excellence',
       icon: Star,
-      image: '/lovable-uploads/e3a15b4e-2719-4351-bca5-f5394085edb6.png'
+      image: '/My_Photos/3rd Place in Mathematical Competition.png'
     }
   ];
 
@@ -38,7 +41,7 @@ const Achievements = () => {
       year: '2025',
       category: 'Leadership',
       icon: Users,
-      image: '/lovable-uploads/e8b8bf66-00dc-4363-ae11-ad540eb625a0.png'
+      image: '/My_Photos/Invited As A Guest Lecturer.png'
     },
     {
       title: 'Best Finance Associate & Product Manager',
@@ -46,7 +49,7 @@ const Achievements = () => {
       year: '2025',
       category: 'Leadership',
       icon: Trophy,
-       image: '/lovable-uploads/1bc9305b-8ad7-4626-870b-78b00aca391c.png'
+      image: '/My_Photos/Best Finance Associate & Product Manager.png'
     },
     {
       title: 'Director of Make360 Training Program',
@@ -54,34 +57,17 @@ const Achievements = () => {
       year: '2024',
       category: 'Leadership',
       icon: Award,
-      image: '/lovable-uploads/e83a240d-8434-4fd1-a213-aa45a0c7358e.png' 
+      image: '/My_Photos/Director of Make360 Training Program.png'
     }
   ];
 
   const certifications = [
     'AWS Cloud Practitioner',
-    'Google Analytics Certified',
+    'Web Developer Certified',
     'MongoDB Developer',
     'React Professional Certificate',
     'Cybersecurity Fundamentals'
   ];
-
-  const getIconForCategory = (category: string) => {
-    switch (category.toLowerCase()) {
-      case 'leadership':
-        return Users;
-      case 'competition':
-        return Trophy;
-      case 'communication':
-        return Award;
-      case 'innovation':
-        return Star;
-      case 'academic excellence':
-        return BookOpen;
-      default:
-        return Award;
-    }
-  };
 
   const getCategoryColor = (category: string) => {
     switch (category.toLowerCase()) {
@@ -105,6 +91,7 @@ const Achievements = () => {
   return (
     <section id="achievements" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
+        {/* Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
             Achievements & <span className="text-primary">Recognition</span>
@@ -120,34 +107,33 @@ const Achievements = () => {
             Academic Achievements
           </h3>
           <div className="grid md:grid-cols-3 gap-6">
-            {academicAchievements.map((achievement, index) => {
+            {academicAchievements.map((achievement) => {
               const Icon = achievement.icon;
               return (
-                <Card key={achievement.title} className="p-6 hover-lift transition-smooth text-center bg-gradient-card overflow-hidden">
+                <Card
+                  key={achievement.title}
+                  className="p-6 hover-lift transition-smooth text-center bg-gradient-card overflow-hidden"
+                >
                   {achievement.image && (
-                    <div className="mb-4 -mx-6 -mt-6">
-                      <img 
-                        src={achievement.image} 
+                    <div
+                      className="mb-4 -mx-6 -mt-6 cursor-pointer"
+                      onClick={() => setSelectedImage(achievement.image)}
+                    >
+                      <img
+                        src={achievement.image}
                         alt={achievement.title}
-                        className="w-full h-48 object-cover"
+                        className="w-full h-48 object-cover hover:opacity-90 transition"
                       />
                     </div>
                   )}
                   <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Icon className="h-8 w-8 text-primary" />
                   </div>
-                  <Badge 
-                    variant="outline" 
-                    className={`${getCategoryColor(achievement.category)} border mb-3`}
-                  >
+                  <Badge variant="outline" className={`${getCategoryColor(achievement.category)} border mb-3`}>
                     {achievement.category}
                   </Badge>
-                  <h4 className="text-lg font-heading font-semibold mb-2">
-                    {achievement.title}
-                  </h4>
-                  <p className="text-muted-foreground mb-3 text-sm">
-                    {achievement.description}
-                  </p>
+                  <h4 className="text-lg font-heading font-semibold mb-2">{achievement.title}</h4>
+                  <p className="text-muted-foreground mb-3 text-sm">{achievement.description}</p>
                   <div className="flex items-center justify-center text-sm text-muted-foreground">
                     <Calendar className="h-4 w-4 mr-1" />
                     {achievement.year}
@@ -158,22 +144,28 @@ const Achievements = () => {
           </div>
         </div>
 
-        {/* Extracurricular & Co-Curricular */}
+        {/* Extracurricular Achievements */}
         <div className="mb-16">
           <h3 className="text-3xl font-heading font-semibold text-center mb-8">
             Leadership & Extracurricular Excellence
           </h3>
           <div className="grid lg:grid-cols-2 gap-6">
-            {extracurricularAchievements.map((achievement, index) => {
+            {extracurricularAchievements.map((achievement) => {
               const Icon = achievement.icon;
               return (
-                <Card key={achievement.title} className="p-6 hover-lift transition-smooth overflow-hidden">
+                <Card
+                  key={achievement.title}
+                  className="p-6 hover-lift transition-smooth overflow-hidden"
+                >
                   {achievement.image && (
-                    <div className="mb-4 -mx-6 -mt-6">
-                      <img 
-                        src={achievement.image} 
+                    <div
+                      className="mb-4 -mx-6 -mt-6 cursor-pointer"
+                      onClick={() => setSelectedImage(achievement.image)}
+                    >
+                      <img
+                        src={achievement.image}
                         alt={achievement.title}
-                        className="w-full h-48 object-cover"
+                        className="w-full h-48 object-cover hover:opacity-90 transition"
                       />
                     </div>
                   )}
@@ -183,10 +175,7 @@ const Achievements = () => {
                     </div>
                     <div className="flex-1">
                       <div className="flex items-start justify-between mb-3">
-                        <Badge 
-                          variant="outline" 
-                          className={`${getCategoryColor(achievement.category)} border`}
-                        >
+                        <Badge variant="outline" className={`${getCategoryColor(achievement.category)} border`}>
                           {achievement.category}
                         </Badge>
                         <div className="flex items-center text-sm text-muted-foreground">
@@ -194,12 +183,8 @@ const Achievements = () => {
                           {achievement.year}
                         </div>
                       </div>
-                      <h4 className="text-lg font-heading font-semibold mb-2">
-                        {achievement.title}
-                      </h4>
-                      <p className="text-muted-foreground text-sm">
-                        {achievement.description}
-                      </p>
+                      <h4 className="text-lg font-heading font-semibold mb-2">{achievement.title}</h4>
+                      <p className="text-muted-foreground text-sm">{achievement.description}</p>
                     </div>
                   </div>
                 </Card>
@@ -210,14 +195,12 @@ const Achievements = () => {
 
         {/* Certifications */}
         <Card className="p-8 text-center bg-gradient-to-r from-primary/5 to-secondary/5">
-          <h3 className="text-2xl font-heading font-semibold mb-6">
-            Professional Certifications
-          </h3>
+          <h3 className="text-2xl font-heading font-semibold mb-6">Professional Certifications</h3>
           <div className="flex flex-wrap gap-3 justify-center">
             {certifications.map((cert) => (
-              <Badge 
-                key={cert} 
-                variant="secondary" 
+              <Badge
+                key={cert}
+                variant="secondary"
                 className="px-4 py-2 text-sm font-medium hover:bg-primary hover:text-primary-foreground transition-smooth cursor-default"
               >
                 {cert}
@@ -249,6 +232,32 @@ const Achievements = () => {
           </Card>
         </div>
       </div>
+
+      {/* Modal */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
+          onClick={() => setSelectedImage(null)}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="relative"
+          >
+            <img
+              src={selectedImage}
+              alt="Selected Achievement"
+              className="max-w-3xl max-h-[90vh] rounded-xl shadow-2xl"
+            />
+            <button
+              className="absolute top-2 right-2 bg-white rounded-full p-2 shadow hover:bg-gray-200"
+              onClick={() => setSelectedImage(null)}
+            >
+              <X className="w-5 h-5 text-black" />
+            </button>
+          </motion.div>
+        </div>
+      )}
     </section>
   );
 };
