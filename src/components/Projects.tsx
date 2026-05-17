@@ -1,158 +1,142 @@
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { ExternalLink, Github, Smartphone, FileText } from 'lucide-react';
+import { ExternalLink, Github, Monitor, LayoutDashboard } from 'lucide-react';
+import { FadeIn } from './ui/fade-in';
+import AmbientBackground from './AmbientBackground';
 
 const Projects = () => {
   const projects = [
     {
-      title: 'Zudo Campus',
-      description: 'A comprehensive campus management platform designed to streamline academic and administrative processes. Features include student management, course scheduling, grade tracking, and real-time communication between students, faculty, and administration.',
-      image: '/placeholder-project-1.jpg',
-      technologies: ['HTML5', 'CSS3', 'JavaScript', 'React', 'MongoDB', 'Tailwind CSS'],
-      category: 'Web Application',
-      icon: Smartphone,
+      title: 'ZudoCampus',
+      description: 'A comprehensive student-focused digital ecosystem platform. Optimized navigation and implemented KPI-based workflow improvements for enhanced user engagement.',
+      technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'Tailwind CSS'],
+      category: 'Digital Ecosystem Platform',
+      icon: Monitor,
       demoLink: '#',
       codeLink: '#',
       features: [
-        'Student & Faculty Management',
-        'Course Scheduling System',
-        'Real-time Notifications',
-        'Grade Management',
-        'Responsive Design'
+        'Event Management System',
+        'Tutor Marketplace',
+        'Second-Hand Marketplace',
+        'Cafe Booking System',
+        'KPI-Based Workflow Improvements'
       ]
     },
     {
-      title: 'Place Report Generator',
-      description: 'An automated system for generating comprehensive placement reports with analytics and insights. The system processes placement data, generates visual reports, and provides detailed analytics for career services departments.',
-      image: '/placeholder-project-2.jpg',
-      technologies: ['php', 'JavaScript', 'tailwind', 'Sql', 'Express.js'],
-      category: 'Data Analytics',
-      icon: FileText,
+      title: 'EduFlow ERP',
+      description: 'An enterprise resource planning platform tailored for schools and colleges. Built with a scalable multi-module architecture to automate administrative tasks.',
+      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Redux', 'Node.js'],
+      category: 'ERP Platform',
+      icon: LayoutDashboard,
       demoLink: '#',
       codeLink: '#',
       features: [
-        'Automated Report Generation',
-        'Data Visualization',
-        'Statistical Analysis',
-        'Export Functionality',
-        'Interactive Dashboards'
-      ]
-    },
-    {
-      title: 'IoT Security Framework',
-      description: 'A novel integrated framework for IoT safety combining adaptive AI alerts, zero-trust architecture, and quantum-resistant cryptography to enhance security in connected devices and smart systems.',
-      image: '/placeholder-project-3.jpg',
-      technologies: ['Python', 'IoT Protocols', 'Machine Learning', 'Cryptography', 'Blockchain'],
-      category: 'Research Project',
-      icon: Smartphone,
-      demoLink: '#',
-      codeLink: '#',
-      features: [
-        'AI-Powered Threat Detection',
-        'Zero-Trust Security Model',
-        'Quantum-Resistant Encryption',
-        'Real-time Monitoring',
-        'Scalable Architecture'
+        'Multi-Module Architecture',
+        'Comprehensive Dashboard Systems',
+        'Attendance Automation',
+        'Notice Management',
+        'Role-Based Permission Systems'
       ]
     }
   ];
 
   return (
-    <section id="projects" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
-            Featured <span className="text-primary">Projects</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Explore some of my notable projects that showcase my technical skills and problem-solving abilities
-          </p>
-        </div>
+    <section id="projects" className="py-24 relative overflow-hidden">
+      <AmbientBackground variant="cards" />
+      <div className="container mx-auto px-6 relative z-10">
+        <FadeIn direction="up">
+          <div className="max-w-[1400px] mx-auto text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-foreground">
+              Featured Projects
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-4xl mx-auto">
+              Showcasing full-stack applications and product execution across different domains.
+            </p>
+          </div>
+        </FadeIn>
 
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-2 gap-10 max-w-[1400px] mx-auto">
           {projects.map((project, index) => {
             const Icon = project.icon;
             return (
-              <Card key={project.title} className="group overflow-hidden hover-lift transition-smooth">
-                {/* Project Image */}
-                <div className="relative h-48 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                  <Icon className="h-16 w-16 text-primary/60" />
-                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-smooth"></div>
-                </div>
+              <FadeIn key={project.title} delay={index * 0.2}>
+                <Card className="group overflow-hidden glass border-gradient hover:shadow-xl transition-all duration-300 flex flex-col hover:-translate-y-1">
+                  <div className="p-8 flex-1 relative z-10">
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="w-12 h-12 rounded-xl bg-teal-500/10 flex items-center justify-center text-teal-500 group-hover:bg-teal-500/20 transition-colors">
+                        <Icon className="h-6 w-6" />
+                      </div>
+                      <Badge variant="secondary" className="bg-muted text-muted-foreground">
+                        {project.category}
+                      </Badge>
+                    </div>
 
-                <div className="p-6">
-                  {/* Project Category */}
-                  <Badge variant="secondary" className="mb-3">
-                    {project.category}
-                  </Badge>
+                    <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-teal-500 transition-colors">
+                      {project.title}
+                    </h3>
 
-                  {/* Project Title */}
-                  <h3 className="text-xl font-heading font-semibold mb-3 group-hover:text-primary transition-fast">
-                    {project.title}
-                  </h3>
+                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                      {project.description}
+                    </p>
 
-                  {/* Project Description */}
-                  <p className="text-muted-foreground mb-4 leading-relaxed">
-                    {project.description}
-                  </p>
-
-                  {/* Key Features */}
-                  <div className="mb-6">
-                    <h4 className="font-semibold mb-2 text-sm">Key Features:</h4>
-                    <ul className="text-sm text-muted-foreground space-y-1">
-                      {project.features.slice(0, 3).map((feature, idx) => (
-                        <li key={idx} className="flex items-center">
-                          <span className="w-1 h-1 bg-primary rounded-full mr-2"></span>
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Technologies */}
-                  <div className="mb-6">
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech) => (
-                        <Badge 
-                          key={tech} 
-                          variant="outline" 
-                          className="text-xs border-primary/30 hover:bg-primary hover:text-primary-foreground transition-fast"
-                        >
-                          {tech}
-                        </Badge>
-                      ))}
+                    <div className="space-y-6 mb-8">
+                      <div>
+                        <h4 className="font-semibold mb-3 text-sm text-card-foreground uppercase tracking-wider">Core Features</h4>
+                        <ul className="grid grid-cols-1 gap-2">
+                          {project.features.map((feature, idx) => (
+                            <li key={idx} className="flex items-start text-sm text-muted-foreground">
+                              <span className="w-1.5 h-1.5 bg-teal-500/50 rounded-full mr-2.5 mt-1.5 flex-shrink-0"></span>
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      <div>
+                        <h4 className="font-semibold mb-3 text-sm text-card-foreground uppercase tracking-wider">Tech Stack</h4>
+                        <div className="flex flex-wrap gap-2">
+                          {project.technologies.map((tech) => (
+                            <Badge 
+                              key={tech} 
+                              variant="outline" 
+                              className="bg-background/50 border-border/50 text-muted-foreground hover:border-teal-500/50 transition-colors"
+                            >
+                              {tech}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  {/* Action Buttons */}
-                  <div className="flex space-x-3">
-                    <Button variant="default" size="sm" className="flex-1" asChild>
+                  <div className="p-6 border-t border-white/5 bg-black/20 flex gap-4 mt-auto relative z-10">
+                    <Button className="flex-1 shadow-sm hover:shadow-md transition-all bg-teal-500 hover:bg-teal-600 text-white border-0" asChild>
                       <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="mr-2 h-4 w-4" />
-                        Demo
+                        <ExternalLink className="mr-2 h-4 w-4" /> Live Demo
                       </a>
                     </Button>
-                    <Button variant="outline" size="sm" className="flex-1" asChild>
+                    <Button variant="outline" className="flex-1 bg-background/50 hover:bg-muted transition-colors" asChild>
                       <a href={project.codeLink} target="_blank" rel="noopener noreferrer">
-                        <Github className="mr-2 h-4 w-4" />
-                        Code
+                        <Github className="mr-2 h-4 w-4" /> Source Code
                       </a>
                     </Button>
                   </div>
-                </div>
-              </Card>
+                </Card>
+              </FadeIn>
             );
           })}
         </div>
 
-        {/* More Projects CTA */}
-        <div className="text-center mt-12">
-          <Button variant="outline" size="lg" className="hover-lift transition-smooth">
-            <Github className="mr-2 h-5 w-5" />
-            View All Projects on GitHub
-          </Button>
-        </div>
+        <FadeIn delay={0.4} direction="up">
+          <div className="text-center mt-16">
+            <Button variant="outline" size="lg" className="rounded-full px-8 shadow-sm hover:shadow-md transition-all border-teal-500/30 hover:border-teal-500 hover:bg-teal-500/5" asChild>
+              <a href="https://github.com/Aryanraj0105/" target="_blank" rel="noopener noreferrer">
+                <Github className="mr-2 h-5 w-5" /> View All on GitHub
+              </a>
+            </Button>
+          </div>
+        </FadeIn>
       </div>
     </section>
   );

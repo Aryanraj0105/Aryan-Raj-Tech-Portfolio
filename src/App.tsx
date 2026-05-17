@@ -14,8 +14,7 @@ const App = () => (
     <ThemeProvider 
       attribute="class" 
       defaultTheme="light" 
-      enableSystem 
-      disableTransitionOnChange
+      enableSystem
     >
       <TooltipProvider>
         <Toaster />

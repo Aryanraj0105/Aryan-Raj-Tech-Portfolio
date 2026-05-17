@@ -1,125 +1,125 @@
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Award, Calendar, ExternalLink } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Award, Calendar, Eye, ExternalLink } from 'lucide-react';
+import { useState } from 'react';
+import DocumentModal from './DocumentModal';
+import { FadeIn } from './ui/fade-in';
+import AmbientBackground from './AmbientBackground';
 
 const Certifications = () => {
+  const [selectedDoc, setSelectedDoc] = useState<{title: string, url: string, type: 'image' | 'pdf' | 'link'} | null>(null);
+
+  // Scalable data structure for certificates/proofs
   const certifications = [
     {
-      title: 'Introduction to Deep Learning 2025',
+      title: 'React JS Free Course',
+      issuer: 'Scaler Topics',
+      year: '2025',
+      category: 'Web Development',
+      documentUrl: '/My_Photos/React.js Certification.png',
+      documentType: 'image' as const,
+      skills: ['React', 'Frontend Development']
+    },
+    {
+      title: 'Introduction to Deep Learning',
       issuer: 'Infosys',
       year: '2025',
-      type: 'AI/ML',
-      description: 'Comprehensive training on deep learning fundamentals, neural networks, and practical applications.',
-      skills: ['Deep Learning', 'Neural Networks', 'Python', 'TensorFlow'],
-      color: 'bg-purple-500/10 text-purple-700 border-purple-500/30',
-      logo: '🧠'
+      category: 'AI/ML',
+      documentUrl: '/Deep learning Certificate.pdf',
+      documentType: 'pdf' as const,
+      skills: ['Deep Learning', 'Neural Networks', 'Python']
     },
     {
-      title: 'Web Development Training Certification',
-      issuer: 'Makes360',
-      year: '2024',
-      type: 'Web Development',
-      description: 'Advanced web development training covering modern frameworks and best practices.',
-      skills: ['HTML5', 'CSS3', 'JavaScript', 'React', 'Node.js'],
-      color: 'bg-blue-500/10 text-blue-700 border-blue-500/30',
-      logo: '🌐'
-    },
-    {
-      title: 'AWS Academy Certification: Cloud Foundations',
-      issuer: 'AWS Academy',
-      year: '2024',
-      type: 'Cloud Computing',
-      description: 'Foundational knowledge of AWS cloud services, architecture, and best practices.',
-      skills: ['AWS Services', 'Cloud Architecture', 'EC2', 'S3', 'IAM'],
-      color: 'bg-orange-500/10 text-orange-700 border-orange-500/30',
-      logo: '☁️'
+      title: 'AI Certification',
+      issuer: 'Infosys',
+      year: '2025',
+      category: 'AI/ML',
+      documentUrl: '/AI Certification.pdf',
+      documentType: 'pdf' as const,
+      skills: ['AI', 'Machine Learning']
     }
   ];
 
   return (
-    <section id="certifications" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
-            Professional <span className="text-primary">Certifications</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Validated expertise through industry-recognized certifications and training programs
-          </p>
-        </div>
+    <section id="certifications" className="py-24 relative overflow-hidden">
+      <AmbientBackground variant="neutral" />
+      <div className="container mx-auto px-6 relative z-10">
+        <FadeIn direction="up">
+          <div className="max-w-[1400px] mx-auto text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-foreground">
+              Certifications & Proofs
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-4xl mx-auto">
+              Validated expertise, internship proofs, and achievements.
+            </p>
+          </div>
+        </FadeIn>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1400px] mx-auto mb-16">
           {certifications.map((cert, index) => (
-            <Card key={cert.title} className="p-6 hover-lift transition-smooth bg-gradient-card h-full flex flex-col">
-              <div className="flex items-start justify-between mb-4">
-                <div className="w-16 h-16 bg-primary/10 rounded-xl flex items-center justify-center text-2xl">
-                  {cert.logo}
+            <FadeIn key={index} delay={index * 0.1}>
+              <Card className="flex flex-col p-6 glass border-gradient hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group h-full">
+                <div className="flex items-start justify-between mb-6 relative z-10">
+                  <div className="w-12 h-12 bg-teal-500/10 rounded-xl flex items-center justify-center text-teal-500 group-hover:scale-110 group-hover:bg-teal-500/20 transition-all">
+                    <Award className="h-6 w-6" />
+                  </div>
+                  <Badge variant="secondary" className="bg-muted text-muted-foreground">
+                    {cert.category}
+                  </Badge>
                 </div>
-                <Badge variant="outline" className={cert.color}>
-                  {cert.type}
-                </Badge>
-              </div>
 
-              <div className="flex-1">
-                <h3 className="text-lg font-heading font-bold mb-2 leading-tight">
-                  {cert.title}
-                </h3>
-                
-                <div className="flex items-center justify-between mb-3">
-                  <p className="text-primary font-semibold">{cert.issuer}</p>
-                  <div className="flex items-center text-sm text-muted-foreground">
-                    <Calendar className="h-4 w-4 mr-1" />
-                    {cert.year}
+                <div className="flex-1 relative z-10">
+                  <h3 className="text-lg font-bold mb-2 text-card-foreground group-hover:text-teal-500 transition-colors line-clamp-2">
+                    {cert.title}
+                  </h3>
+                  
+                  <div className="flex items-center justify-between mb-4">
+                    <p className="text-sm font-medium text-foreground">{cert.issuer}</p>
+                    <div className="flex items-center text-sm text-muted-foreground">
+                      <Calendar className="h-3.5 w-3.5 mr-1" />
+                      {cert.year}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap gap-1 mb-6">
+                    {cert.skills.map((skill) => (
+                      <span key={skill} className="text-xs px-2 py-1 bg-muted/50 text-muted-foreground rounded-md">
+                        {skill}
+                      </span>
+                    ))}
                   </div>
                 </div>
 
-                <p className="text-sm text-muted-foreground mb-4">
-                  {cert.description}
-                </p>
-              </div>
-
-              <div>
-                <h4 className="text-sm font-semibold mb-2 flex items-center">
-                  <Award className="h-4 w-4 mr-1 text-primary" />
-                  Skills Covered
-                </h4>
-                <div className="flex flex-wrap gap-1">
-                  {cert.skills.map((skill) => (
-                    <Badge
-                      key={skill} 
-                      variant="secondary" 
-                      className="px-2 py-1 text-xs hover:bg-primary hover:text-primary-foreground transition-smooth"
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
+                <div className="pt-4 border-t border-white/5 mt-auto relative z-10">
+                  <Button 
+                    variant="ghost" 
+                    className="w-full justify-center text-muted-foreground hover:text-teal-500 hover:bg-teal-500/10 transition-colors"
+                    onClick={() => setSelectedDoc({ title: cert.title, url: cert.documentUrl, type: cert.documentType })}
+                  >
+                    {cert.documentType === 'link' ? (
+                      <><ExternalLink className="h-4 w-4 mr-2" /> Verify Certificate</>
+                    ) : (
+                      <><Eye className="h-4 w-4 mr-2" /> View Document</>
+                    )}
+                  </Button>
                 </div>
-              </div>
-            </Card>
+              </Card>
+            </FadeIn>
           ))}
         </div>
 
-        {/* Certification Summary */}
-        <Card className="p-8 text-center bg-gradient-to-r from-primary/5 to-secondary/5">
-          <h3 className="text-2xl font-heading font-semibold mb-6">
-            Continuous Learning & Professional Development
-          </h3>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="space-y-2">
-              <div className="text-3xl font-bold text-primary">{certifications.length}</div>
-              <div className="text-sm text-muted-foreground">Active Certifications</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-3xl font-bold text-primary">3</div>
-              <div className="text-sm text-muted-foreground">Technology Domains</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-3xl font-bold text-primary">2023-25</div>
-              <div className="text-sm text-muted-foreground">Recent Achievements</div>
-            </div>
-          </div>
-        </Card>
       </div>
+
+      {selectedDoc && (
+        <DocumentModal 
+          isOpen={!!selectedDoc} 
+          onClose={() => setSelectedDoc(null)} 
+          title={selectedDoc.title}
+          documentUrl={selectedDoc.url}
+          type={selectedDoc.type}
+        />
+      )}
     </section>
   );
 };

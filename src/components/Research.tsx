@@ -2,6 +2,8 @@ import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { BookOpen, FileText, Award, ExternalLink, Download } from 'lucide-react';
+import { FadeIn } from './ui/fade-in';
+import AmbientBackground from './AmbientBackground';
 
 const Research = () => {
   const researchWorks = [
@@ -10,8 +12,8 @@ const Research = () => {
       title: 'USB Bus Tracking System',
       description: 'An innovative IoT-based system for real-time tracking and monitoring of public transportation using USB-powered devices. The system provides live location updates, route optimization, and passenger information management.',
       status: 'Filed',
-      date: '2024',
-      category: 'IoT & Securitu',
+      date: '2025',
+      category: 'IoT & Security',
       icon: Award,
       link: '#',
       highlights: [
@@ -71,133 +73,124 @@ const Research = () => {
     }
   ];
 
-  const getStatusColor = (status: string) => {
-    switch (status.toLowerCase()) {
-      case 'published':
-        return 'bg-green-500/10 text-green-700 border-green-500/30';
-      case 'filed':
-        return 'bg-blue-500/10 text-blue-700 border-blue-500/30';
-      case 'under review':
-        return 'bg-yellow-500/10 text-yellow-700 border-yellow-500/30';
-      default:
-        return 'bg-gray-500/10 text-gray-700 border-gray-500/30';
-    }
-  };
-
   return (
-    <section id="research" className="py-20">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
-            Research <span className="text-primary">Work</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Exploring cutting-edge technologies through patents, publications, and innovative research projects
-          </p>
-        </div>
+    <section id="research" className="py-24 relative overflow-hidden bg-background">
+      <AmbientBackground />
+      <div className="container mx-auto px-6 relative z-10">
+        <FadeIn direction="up">
+          <div className="max-w-[1400px] mx-auto text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-foreground">
+              Research Work
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-4xl mx-auto">
+              Exploring cutting-edge technologies through patents, publications, and innovative research projects.
+            </p>
+          </div>
+        </FadeIn>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-2 gap-8 max-w-[1400px] mx-auto">
           {researchWorks.map((work, index) => {
             const Icon = work.icon;
             return (
-              <Card key={work.title} className="p-8 hover-lift transition-smooth group bg-gradient-card">
-                {/* Header */}
-                <div className="flex items-start justify-between mb-6">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <Icon className="h-6 w-6 text-primary" />
-                    </div>
-                    <div>
-                      <Badge variant="outline" className="mb-2">
-                        {work.type}
-                      </Badge>
-                      <Badge 
-                        variant="outline" 
-                        className={`${getStatusColor(work.status)} border`}
-                      >
-                        {work.status}
-                      </Badge>
+              <FadeIn key={index} delay={index * 0.2}>
+                <Card className="p-8 bg-card/80 backdrop-blur-md border-border/50 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full">
+                  {/* Header */}
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="flex items-center space-x-4">
+                      <div className="w-12 h-12 bg-muted rounded-xl flex items-center justify-center group-hover:bg-teal-500/10 transition-colors">
+                        <Icon className="h-6 w-6 text-teal-500" />
+                      </div>
+                      <div>
+                        <div className="flex gap-2 mb-1">
+                          <Badge variant="secondary" className="bg-muted text-muted-foreground">
+                            {work.type}
+                          </Badge>
+                          <Badge variant="outline" className="border-border/50">
+                            {work.status}
+                          </Badge>
+                        </div>
+                        <span className="text-sm text-muted-foreground">
+                          {work.date}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                  <span className="text-sm text-muted-foreground font-medium">
-                    {work.date}
-                  </span>
-                </div>
 
-                {/* Title */}
-                <h3 className="text-xl font-heading font-semibold mb-4 group-hover:text-primary transition-fast">
-                  {work.title}
-                </h3>
+                  {/* Title */}
+                  <h3 className="text-xl font-bold mb-3 text-card-foreground group-hover:text-teal-500 transition-colors">
+                    {work.title}
+                  </h3>
 
-                {/* Category */}
-                <Badge variant="secondary" className="mb-4">
-                  {work.category}
-                </Badge>
+                  {/* Category */}
+                  <Badge variant="outline" className="mb-4 w-fit bg-background/50 text-muted-foreground">
+                    {work.category}
+                  </Badge>
 
-                {/* Description */}
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  {work.description}
-                </p>
+                  {/* Description */}
+                  <p className="text-muted-foreground mb-6 leading-relaxed flex-1">
+                    {work.description}
+                  </p>
 
-                {/* Key Highlights */}
-                <div className="mb-6">
-                  <h4 className="font-semibold mb-3 text-sm">Key Highlights:</h4>
-                  <ul className="space-y-2">
-                    {work.highlights.map((highlight, idx) => (
-                      <li key={idx} className="flex items-center text-sm text-muted-foreground">
-                        <span className="w-2 h-2 bg-primary rounded-full mr-3 flex-shrink-0"></span>
-                        {highlight}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                  {/* Key Highlights */}
+                  <div className="mb-8">
+                    <h4 className="font-semibold mb-3 text-sm uppercase tracking-wider text-card-foreground">Key Highlights</h4>
+                    <ul className="space-y-2">
+                      {work.highlights.map((highlight, idx) => (
+                        <li key={idx} className="flex items-start text-sm text-muted-foreground">
+                          <span className="w-1.5 h-1.5 bg-teal-500/50 rounded-full mr-2.5 mt-1.5 flex-shrink-0"></span>
+                          {highlight}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
-                {/* Actions */}
-                <div className="flex space-x-3">
-                  <Button variant="default" size="sm" className="flex-1" asChild>
-                    <a href={work.link} target="_blank" rel="noopener noreferrer">
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      View Details
-                    </a>
-                  </Button>
-                  <Button variant="outline" size="sm" className="flex-1">
-                    <Download className="mr-2 h-4 w-4" />
-                    Download
-                  </Button>
-                </div>
-              </Card>
+                  {/* Actions */}
+                  <div className="flex gap-3 mt-auto pt-4 border-t border-border/50">
+                    <Button variant="default" className="flex-1 shadow-sm bg-teal-500 hover:bg-teal-600 text-white" asChild>
+                      <a href={work.link} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink className="mr-2 h-4 w-4" /> View Details
+                      </a>
+                    </Button>
+                    <Button variant="outline" className="flex-1 bg-background hover:bg-muted">
+                      <Download className="mr-2 h-4 w-4" /> Download
+                    </Button>
+                  </div>
+                </Card>
+              </FadeIn>
             );
           })}
         </div>
 
         {/* Research Stats */}
-        <div className="mt-16">
-          <Card className="p-8 bg-gradient-to-r from-primary/5 to-secondary/5">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-heading font-semibold mb-2">Research Impact</h3>
-              <p className="text-muted-foreground">Contributions to the academic and research community</p>
-            </div>
-            
-            <div className="grid md:grid-cols-4 gap-6 text-center">
-              <div>
-                <div className="text-3xl font-bold text-primary mb-2">1</div>
-                <div className="text-sm text-muted-foreground">Patent Filed</div>
+        <FadeIn delay={0.4} direction="up">
+          <div className="mt-20 max-w-[1400px] mx-auto">
+            <Card className="p-8 bg-card/80 backdrop-blur-md border-border/50 text-center shadow-sm hover:shadow-md transition-shadow">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold mb-2">Research Impact</h3>
+                <p className="text-muted-foreground">Contributions to the academic and research community</p>
               </div>
-              <div>
-                <div className="text-3xl font-bold text-primary mb-2">3+</div>
-                <div className="text-sm text-muted-foreground">Publications</div>
+
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                  <div className="text-4xl font-bold text-teal-500 mb-2">1</div>
+                  <div className="text-sm text-muted-foreground font-medium uppercase tracking-wider">Patent Filed</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-bold text-teal-500 mb-2">3+</div>
+                  <div className="text-sm text-muted-foreground font-medium uppercase tracking-wider">Publications</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-bold text-teal-500 mb-2">2</div>
+                  <div className="text-sm text-muted-foreground font-medium uppercase tracking-wider">Research Areas</div>
+                </div>
+                <div>
+                  <div className="text-4xl font-bold text-teal-500 mb-2">2024</div>
+                  <div className="text-sm text-muted-foreground font-medium uppercase tracking-wider">Active Year</div>
+                </div>
               </div>
-              <div>
-                <div className="text-3xl font-bold text-primary mb-2">2</div>
-                <div className="text-sm text-muted-foreground">Research Areas</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-primary mb-2">2024</div>
-                <div className="text-sm text-muted-foreground">Active Year</div>
-              </div>
-            </div>
-          </Card>
-        </div>
+            </Card>
+          </div>
+        </FadeIn>
       </div>
     </section>
   );

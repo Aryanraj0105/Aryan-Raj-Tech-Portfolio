@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import { Github, Linkedin, Mail, Heart, ArrowUp } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -12,10 +12,10 @@ const Footer = () => {
 
   const quickLinks = [
     { href: '#about', label: 'About' },
+    { href: '#experience', label: 'Experience' },
     { href: '#skills', label: 'Skills' },
     { href: '#projects', label: 'Projects' },
-    { href: '#research', label: 'Research' },
-    { href: '#achievements', label: 'Achievements' },
+    { href: '#certifications', label: 'Certifications' },
     { href: '#contact', label: 'Contact' },
   ];
 
@@ -24,21 +24,21 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-muted/50 border-t border-border">
-      <div className="container mx-auto px-4">
+    <footer className="bg-background border-t border-border">
+      <div className="container mx-auto px-6">
         {/* Main Footer Content */}
-        <div className="py-12 grid lg:grid-cols-3 gap-8">
+        <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand & Description */}
-          <div className="lg:col-span-1">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-gradient-hero rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-lg">AR</span>
+          <div className="lg:col-span-2">
+            <div className="flex items-center space-x-3 mb-6">
+              <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center border border-primary/20">
+                <span className="text-primary font-bold text-lg">AR</span>
               </div>
-              <span className="font-heading font-bold text-xl">Aryan Raj</span>
+              <span className="font-semibold text-xl tracking-tight">Aryan Raj</span>
             </div>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
-              Computer Science & Engineering student passionate about creating innovative 
-              solutions and conducting cutting-edge research in technology.
+            <p className="text-muted-foreground mb-8 max-w-sm leading-relaxed">
+              Product Engineer & Full-Stack Developer focused on building scalable, 
+              high-quality applications and seamless user experiences.
             </p>
             <div className="flex space-x-3">
               {socialLinks.map((social) => {
@@ -46,12 +46,12 @@ const Footer = () => {
                 return (
                   <Button 
                     key={social.label} 
-                    variant="ghost" 
-                    size="sm"
-                    className="hover:bg-primary hover:text-primary-foreground transition-smooth"
+                    variant="outline" 
+                    size="icon"
+                    className="h-10 w-10 rounded-full hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
                     asChild
                   >
-                    <a href={social.href} target="_blank" rel="noopener noreferrer">
+                    <a href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label}>
                       <Icon size={18} />
                     </a>
                   </Button>
@@ -62,13 +62,13 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div className="lg:col-span-1">
-            <h3 className="font-heading font-semibold mb-4">Quick Links</h3>
-            <div className="grid grid-cols-2 gap-2">
+            <h3 className="font-semibold mb-6 text-foreground">Navigation</h3>
+            <div className="flex flex-col space-y-3">
               {quickLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-muted-foreground hover:text-primary transition-fast py-1"
+                  className="text-muted-foreground hover:text-foreground transition-colors w-fit"
                 >
                   {link.label}
                 </a>
@@ -78,35 +78,34 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div className="lg:col-span-1">
-            <h3 className="font-heading font-semibold mb-4">Get in Touch</h3>
-            <div className="space-y-2 text-muted-foreground">
-              <p>📧 aryanraj190223@gmail.com</p>
-              <p>📱 +91 87097 51968 </p>
-              <p>📍 Chandigarh, India</p>
-              <p>🎓 Chandigarh Engineering College</p>
+            <h3 className="font-semibold mb-6 text-foreground">Contact</h3>
+            <div className="space-y-4 text-muted-foreground">
+              <a href="mailto:aryanraj190223@gmail.com" className="block hover:text-foreground transition-colors">
+                aryanraj190223@gmail.com
+              </a>
+              <a href="tel:+918709751968" className="block hover:text-foreground transition-colors">
+                +91 87097 51968
+              </a>
+              <p>Chandigarh, India</p>
             </div>
           </div>
         </div>
 
         {/* Bottom Footer */}
-        <div className="py-6 border-t border-border flex flex-col md:flex-row justify-between items-center">
+        <div className="py-8 border-t border-border flex flex-col md:flex-row justify-between items-center">
           <p className="text-muted-foreground text-sm">
-            © {currentYear} Aryan Raj. Made {' '}
-            {/* <Heart className="inline h-4 w-4 text-red-500 mx-1" /> */}
-            using React & Tailwind CSS
+            © {currentYear} Aryan Raj. All rights reserved.
           </p>
           
-          <div className="flex items-center space-x-4 mt-4 md:mt-0">
-            <span className="text-muted-foreground text-sm">
-              Last updated: August 2025
-            </span>
+          <div className="flex items-center space-x-6 mt-4 md:mt-0">
             <Button
-              variant="ghost"
+              variant="secondary"
               size="sm"
               onClick={scrollToTop}
-              className="hover:bg-primary hover:text-primary-foreground transition-smooth"
+              className="rounded-full shadow-sm hover:scale-105 transition-transform"
             >
-              <ArrowUp size={16} />
+              <ArrowUp size={16} className="mr-2" />
+              Back to top
             </Button>
           </div>
         </div>

@@ -1,131 +1,89 @@
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
-import { Code2, Database, Palette, Wrench } from 'lucide-react';
+import { LayoutTemplate, Server, Database, Workflow, PenTool, Lightbulb } from 'lucide-react';
+import { FadeIn } from './ui/fade-in';
+import AmbientBackground from './AmbientBackground';
 
 const Skills = () => {
   const skillCategories = [
     {
       title: 'Frontend Development',
-      icon: Code2,
-      color: 'text-blue-500',
-      skills: [
-        { name: 'HTML & CSS', level: 95 },
-        { name: 'JavaScript', level: 70 },
-        { name: 'React', level: 60 },
-        { name: 'Tailwind CSS', level: 90 },
-        { name: 'Bootstrap', level: 85 }
-      ]
+      icon: LayoutTemplate,
+      skills: ['React', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind']
     },
     {
-      title: 'Backend & Databases',
+      title: 'Backend Development',
+      icon: Server,
+      skills: ['Express', 'REST APIs', 'Node.js']
+    },
+    {
+      title: 'Databases',
       icon: Database,
-      color: 'text-green-500',
-      skills: [
-        { name: 'MySQL', level: 85 },
-        { name: 'MongoDB', level: 80 },
-        { name: 'Node.js', level: 60 },
-        { name: 'API Development', level: 60 }
-      ]
+      skills: ['MongoDB', 'MySQL', 'Firebase']
     },
     {
-      title: 'Programming Languages',
-      icon: Code2,
-      color: 'text-purple-500',
-      skills: [
-        { name: 'Java', level: 70 },
-        { name: 'C++', level: 85 },
-        { name: 'Python', level: 75 },
-      ]
+      title: 'Product & Workflow Tools',
+      icon: Workflow,
+      skills: ['Jira', 'Mixpanel', 'Google Analytics', 'Miro']
     },
     {
-      title: 'Tools & Technologies',
-      icon: Wrench,
-      color: 'text-orange-500',
-      skills: [
-        { name: 'Git & GitHub', level: 90 },
-        { name: 'VS Code', level: 95 },
-        { name: 'Figma', level: 70 },
-        { name: 'Excel', level: 80 }
-      ]
+      title: 'Development Tools',
+      icon: PenTool,
+      skills: ['GitHub', 'Postman', 'Figma', 'VS Code']
+    },
+    {
+      title: 'Core Engineering Concepts',
+      icon: Lightbulb,
+      skills: ['SDLC', 'Agile/Scrum', 'System Architecture', 'UI/UX Principles']
     }
   ];
 
-  const technologies = [
-    'React', 'JavaScript', 'Java', 'C++', 'MySQL', 'MongoDB',
-    'Tailwind CSS', 'Bootstrap', 'HTML5', 'CSS3', 'Node.js',
-    'Git', 'GitHub', 'VS Code', 'Figma', 'Python'
-  ];
-
   return (
-    <section id="skills" className="py-20">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
-            Technical <span className="text-primary">Skills</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A comprehensive overview of my technical expertise and proficiency levels
-          </p>
-        </div>
+    <section id="skills" className="py-24 relative overflow-hidden">
+      <AmbientBackground variant="grid" />
+      <div className="container mx-auto px-6 relative z-10">
+        <FadeIn direction="up">
+          <div className="max-w-[1400px] mx-auto text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-foreground">
+              Technical Arsenal
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-4xl mx-auto">
+              A comprehensive overview of the tools, technologies, and methodologies I leverage to build scalable products.
+            </p>
+          </div>
+        </FadeIn>
 
-        {/* Skill Categories with Progress Bars */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-16">
-          {skillCategories.map((category) => {
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1400px] mx-auto">
+          {skillCategories.map((category, index) => {
             const Icon = category.icon;
             return (
-              <Card key={category.title} className="p-8 hover-lift transition-smooth bg-gradient-card">
-                <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
-                    <Icon className={`h-6 w-6 ${category.color}`} />
-                  </div>
-                  <h3 className="text-xl font-heading font-semibold">{category.title}</h3>
-                </div>
-                
-                <div className="space-y-6">
-                  {category.skills.map((skill) => (
-                    <div key={skill.name} className="space-y-2">
-                      <div className="flex justify-between items-center">
-                        <span className="font-medium">{skill.name}</span>
-                        <span className="text-sm text-muted-foreground">{skill.level}%</span>
-                      </div>
-                      <Progress 
-                        value={skill.level} 
-                        className="h-2 bg-muted"
-                      />
+              <FadeIn key={index} delay={index * 0.1}>
+                <Card className="p-6 h-full glass border-gradient hover:-translate-y-1 transition-all duration-300 group">
+                  <div className="flex items-center gap-4 mb-6 relative z-10">
+                    <div className="w-12 h-12 bg-muted rounded-xl flex items-center justify-center text-teal-500 group-hover:bg-teal-500/10 transition-colors">
+                      <Icon className="h-6 w-6" />
                     </div>
-                  ))}
-                </div>
-              </Card>
+                    <h3 className="text-lg font-semibold text-card-foreground">
+                      {category.title}
+                    </h3>
+                  </div>
+                  
+                  <div className="flex flex-wrap gap-2 relative z-10">
+                    {category.skills.map((skill) => (
+                      <Badge 
+                        key={skill} 
+                        variant="secondary" 
+                        className="bg-muted/50 text-muted-foreground hover:bg-teal-500/10 hover:text-teal-500 transition-colors font-medium px-3 py-1"
+                      >
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+                </Card>
+              </FadeIn>
             );
           })}
         </div>
-
-        {/* Technology Stack */}
-        <Card className="p-8 text-center">
-          <div className="flex items-center justify-center mb-6">
-            <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mr-4">
-              <Palette className="h-6 w-6 text-primary" />
-            </div>
-            <h3 className="text-2xl font-heading font-semibold">Technology Stack</h3>
-          </div>
-          
-          <p className="text-muted-foreground mb-8">
-            Technologies I work with regularly
-          </p>
-          
-          <div className="flex flex-wrap gap-3 justify-center">
-            {technologies.map((tech) => (
-              <Badge 
-                key={tech} 
-                variant="secondary" 
-                className="px-4 py-2 text-sm font-medium hover:bg-primary hover:text-primary-foreground transition-smooth cursor-default hover-lift"
-              >
-                {tech}
-              </Badge>
-            ))}
-          </div>
-        </Card>
       </div>
     </section>
   );

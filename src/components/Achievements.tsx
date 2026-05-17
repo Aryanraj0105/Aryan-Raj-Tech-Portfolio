@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Trophy, Award, Star, Calendar, Users, X } from 'lucide-react';
+import { Trophy, Award, Star, Calendar, Users } from 'lucide-react';
+import DocumentModal from './DocumentModal';
+import { FadeIn } from './ui/fade-in';
+import AmbientBackground from './AmbientBackground';
 
 const Achievements = () => {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedDoc, setSelectedDoc] = useState<{title: string, url: string, type: 'image' | 'pdf' | 'link'} | null>(null);
 
   const academicAchievements = [
     {
@@ -61,84 +63,65 @@ const Achievements = () => {
     }
   ];
 
-  const certifications = [
-    'AWS Cloud Practitioner',
-    'Web Developer Certified',
-    'MongoDB Developer',
-    'React Professional Certificate',
-    'Cybersecurity Fundamentals'
-  ];
-
   const getCategoryColor = (category: string) => {
     switch (category.toLowerCase()) {
       case 'leadership':
-        return 'bg-blue-500/10 text-blue-700 border-blue-500/30';
-      case 'competition':
-        return 'bg-green-500/10 text-green-700 border-green-500/30';
-      case 'communication':
-        return 'bg-purple-500/10 text-purple-700 border-purple-500/30';
-      case 'innovation':
-        return 'bg-orange-500/10 text-orange-700 border-orange-500/30';
+        return 'bg-blue-500/10 text-blue-500 border-blue-500/30';
+      case 'project excellence':
+        return 'bg-teal-500/10 text-teal-500 border-teal-500/30';
       case 'academic excellence':
-        return 'bg-indigo-500/10 text-indigo-700 border-indigo-500/30';
-      case 'research':
-        return 'bg-teal-500/10 text-teal-700 border-teal-500/30';
+        return 'bg-indigo-500/10 text-indigo-500 border-indigo-500/30';
       default:
-        return 'bg-gray-500/10 text-gray-700 border-gray-500/30';
+        return 'bg-primary/10 text-primary border-primary/30';
     }
   };
 
   return (
-    <section id="achievements" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
-            Achievements & <span className="text-primary">Recognition</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A collection of academic excellence, leadership roles, and extracurricular accomplishments
-          </p>
-        </div>
-
+    <section id="achievements" className="py-24 relative overflow-hidden">
+      <AmbientBackground variant="neutral" />
+      <div className="container mx-auto px-6 relative z-10">
+        
         {/* Academic Achievements */}
-        <div className="mb-16">
-          <h3 className="text-3xl font-heading font-semibold text-center mb-8">
-            Academic Achievements
-          </h3>
-          <div className="grid md:grid-cols-3 gap-6">
-            {academicAchievements.map((achievement) => {
+        <div className="mb-20">
+          <FadeIn direction="up">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-foreground">
+              Academic Achievements
+            </h2>
+          </FadeIn>
+          <div className="grid md:grid-cols-3 gap-6 max-w-[1400px] mx-auto">
+            {academicAchievements.map((achievement, index) => {
               const Icon = achievement.icon;
               return (
-                <Card
-                  key={achievement.title}
-                  className="p-6 hover-lift transition-smooth text-center bg-gradient-card overflow-hidden"
-                >
-                  {achievement.image && (
-                    <div
-                      className="mb-4 -mx-6 -mt-6 cursor-pointer"
-                      onClick={() => setSelectedImage(achievement.image)}
-                    >
-                      <img
-                        src={achievement.image}
-                        alt={achievement.title}
-                        className="w-full h-48 object-cover hover:opacity-90 transition"
-                      />
+                <FadeIn key={achievement.title} delay={index * 0.1}>
+                  <Card
+                    className="p-6 transition-all text-center glass border-gradient overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 h-full group"
+                  >
+                    {achievement.image && (
+                      <div
+                        className="mb-6 -mx-6 -mt-6 cursor-pointer overflow-hidden group"
+                        onClick={() => setSelectedDoc({ title: achievement.title, url: achievement.image, type: 'image' })}
+                      >
+                        <img
+                          src={achievement.image}
+                          alt={achievement.title}
+                          className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                    )}
+                    <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-border/50 bg-background/50">
+                      <Icon className="h-8 w-8 text-teal-400" />
                     </div>
-                  )}
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Icon className="h-8 w-8 text-primary" />
-                  </div>
-                  <Badge variant="outline" className={`${getCategoryColor(achievement.category)} border mb-3`}>
-                    {achievement.category}
-                  </Badge>
-                  <h4 className="text-lg font-heading font-semibold mb-2">{achievement.title}</h4>
-                  <p className="text-muted-foreground mb-3 text-sm">{achievement.description}</p>
-                  <div className="flex items-center justify-center text-sm text-muted-foreground">
-                    <Calendar className="h-4 w-4 mr-1" />
-                    {achievement.year}
-                  </div>
-                </Card>
+                    <Badge variant="outline" className={`${getCategoryColor(achievement.category)} mb-4`}>
+                      {achievement.category}
+                    </Badge>
+                    <h4 className="text-lg font-bold mb-3 text-card-foreground">{achievement.title}</h4>
+                    <p className="text-muted-foreground mb-4 text-sm leading-relaxed">{achievement.description}</p>
+                    <div className="flex items-center justify-center text-sm text-muted-foreground mt-auto">
+                      <Calendar className="h-4 w-4 mr-1.5" />
+                      {achievement.year}
+                    </div>
+                  </Card>
+                </FadeIn>
               );
             })}
           </div>
@@ -146,117 +129,66 @@ const Achievements = () => {
 
         {/* Extracurricular Achievements */}
         <div className="mb-16">
-          <h3 className="text-3xl font-heading font-semibold text-center mb-8">
-            Leadership & Extracurricular Excellence
-          </h3>
-          <div className="grid lg:grid-cols-2 gap-6">
-            {extracurricularAchievements.map((achievement) => {
+          <FadeIn direction="up">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-foreground">
+              Leadership & Extracurricular Excellence
+            </h2>
+          </FadeIn>
+          <div className="grid lg:grid-cols-3 gap-6 max-w-[1400px] mx-auto">
+            {extracurricularAchievements.map((achievement, index) => {
               const Icon = achievement.icon;
               return (
-                <Card
-                  key={achievement.title}
-                  className="p-6 hover-lift transition-smooth overflow-hidden"
-                >
-                  {achievement.image && (
-                    <div
-                      className="mb-4 -mx-6 -mt-6 cursor-pointer"
-                      onClick={() => setSelectedImage(achievement.image)}
-                    >
-                      <img
-                        src={achievement.image}
-                        alt={achievement.title}
-                        className="w-full h-48 object-cover hover:opacity-90 transition"
-                      />
-                    </div>
-                  )}
-                  <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Icon className="h-6 w-6 text-primary" />
-                    </div>
-                    <div className="flex-1">
-                      <div className="flex items-start justify-between mb-3">
-                        <Badge variant="outline" className={`${getCategoryColor(achievement.category)} border`}>
-                          {achievement.category}
-                        </Badge>
-                        <div className="flex items-center text-sm text-muted-foreground">
-                          <Calendar className="h-4 w-4 mr-1" />
-                          {achievement.year}
-                        </div>
+                <FadeIn key={achievement.title} delay={index * 0.1}>
+                  <Card
+                    className="p-6 transition-all overflow-hidden glass border-gradient shadow-sm hover:shadow-xl hover:-translate-y-1 h-full group"
+                  >
+                    {achievement.image && (
+                      <div
+                        className="mb-6 -mx-6 -mt-6 cursor-pointer overflow-hidden group"
+                        onClick={() => setSelectedDoc({ title: achievement.title, url: achievement.image, type: 'image' })}
+                      >
+                        <img
+                          src={achievement.image}
+                          alt={achievement.title}
+                          className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
                       </div>
-                      <h4 className="text-lg font-heading font-semibold mb-2">{achievement.title}</h4>
-                      <p className="text-muted-foreground text-sm">{achievement.description}</p>
+                    )}
+                    <div className="flex items-start space-x-5">
+                      <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 border border-border/50 bg-background/50">
+                        <Icon className="h-6 w-6 text-teal-400" />
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-start justify-between mb-3">
+                          <Badge variant="outline" className={`${getCategoryColor(achievement.category)}`}>
+                            {achievement.category}
+                          </Badge>
+                          <div className="flex items-center text-sm text-muted-foreground">
+                            <Calendar className="h-4 w-4 mr-1.5" />
+                            {achievement.year}
+                          </div>
+                        </div>
+                        <h4 className="text-lg font-bold mb-2 text-card-foreground">{achievement.title}</h4>
+                        <p className="text-muted-foreground text-sm leading-relaxed">{achievement.description}</p>
+                      </div>
                     </div>
-                  </div>
-                </Card>
+                  </Card>
+                </FadeIn>
               );
             })}
           </div>
         </div>
 
-        {/* Certifications */}
-        <Card className="p-8 text-center bg-gradient-to-r from-primary/5 to-secondary/5">
-          <h3 className="text-2xl font-heading font-semibold mb-6">Professional Certifications</h3>
-          <div className="flex flex-wrap gap-3 justify-center">
-            {certifications.map((cert) => (
-              <Badge
-                key={cert}
-                variant="secondary"
-                className="px-4 py-2 text-sm font-medium hover:bg-primary hover:text-primary-foreground transition-smooth cursor-default"
-              >
-                {cert}
-              </Badge>
-            ))}
-          </div>
-        </Card>
-
-        {/* Achievement Stats */}
-        <div className="mt-16">
-          <Card className="p-8 bg-gradient-hero">
-            <div className="text-center text-primary-foreground">
-              <h3 className="text-2xl font-heading font-semibold mb-8">Achievement Summary</h3>
-              <div className="grid md:grid-cols-3 gap-6">
-                <div>
-                  <div className="text-3xl font-bold mb-2">6+</div>
-                  <div className="text-sm opacity-90">Total Awards</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold mb-2">3</div>
-                  <div className="text-sm opacity-90">Academic Achievements</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold mb-2">3</div>
-                  <div className="text-sm opacity-90">Leadership Excellence</div>
-                </div>
-              </div>
-            </div>
-          </Card>
-        </div>
       </div>
 
-      {/* Modal */}
-      {selectedImage && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50"
-          onClick={() => setSelectedImage(null)}
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="relative"
-          >
-            <img
-              src={selectedImage}
-              alt="Selected Achievement"
-              className="max-w-3xl max-h-[90vh] rounded-xl shadow-2xl"
-            />
-            <button
-              className="absolute top-2 right-2 bg-white rounded-full p-2 shadow hover:bg-gray-200"
-              onClick={() => setSelectedImage(null)}
-            >
-              <X className="w-5 h-5 text-black" />
-            </button>
-          </motion.div>
-        </div>
+      {selectedDoc && (
+        <DocumentModal 
+          isOpen={!!selectedDoc} 
+          onClose={() => setSelectedDoc(null)} 
+          title={selectedDoc.title}
+          documentUrl={selectedDoc.url}
+          type={selectedDoc.type}
+        />
       )}
     </section>
   );

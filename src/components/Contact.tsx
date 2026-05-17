@@ -3,9 +3,15 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Mail, Phone, MapPin, Github, Linkedin, Send, Download } from 'lucide-react';
+import { Mail, Phone, MapPin, Github, Linkedin, Send, FileText, Eye } from 'lucide-react';
+import { useState } from 'react';
+import ResumeModal from './ResumeModal';
+import { FadeIn } from './ui/fade-in';
+import AmbientBackground from './AmbientBackground';
 
 const Contact = () => {
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
+
   const contactInfo = [
     {
       icon: Mail,
@@ -43,154 +49,189 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold mb-4">
-            Let's <span className="text-primary">Connect</span>
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to collaborate, discuss opportunities, or just have a conversation about technology?
-          </p>
-        </div>
+    <section id="contact" className="py-24 relative overflow-hidden">
+      <AmbientBackground variant="neutral" />
+      <div className="container mx-auto px-6 relative z-10">
+        <FadeIn direction="up">
+          <div className="max-w-[1400px] mx-auto text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-foreground">
+              Let's Connect
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-4xl mx-auto">
+              Ready to collaborate, discuss opportunities, or just have a conversation about technology?
+            </p>
+          </div>
+        </FadeIn>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-12 gap-12 max-w-[1400px] mx-auto">
           {/* Contact Information */}
-          <div className="space-y-8">
-            <div>
-              <h3 className="text-2xl font-heading font-semibold mb-6">Get in Touch</h3>
-              <p className="text-muted-foreground mb-8 leading-relaxed">
-                I'm always interested in discussing new opportunities, research collaborations, 
-                or innovative projects. Feel free to reach out if you'd like to connect!
-              </p>
-            </div>
+          <div className="lg:col-span-5 space-y-8">
+            <FadeIn direction="right">
+              <div>
+                <h3 className="text-2xl font-bold mb-4 text-foreground">Get in Touch</h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  I'm always interested in discussing new opportunities, product execution, 
+                  or innovative full-stack projects.
+                </p>
+              </div>
+            </FadeIn>
 
             {/* Contact Methods */}
             <div className="space-y-4">
-              {contactInfo.map((info) => {
+              {contactInfo.map((info, index) => {
                 const Icon = info.icon;
                 return (
-                  <Card 
-                    key={info.label} 
-                    className="p-6 hover-lift transition-smooth bg-white dark:bg-gray-900 border border-border"
-                  >
-                    <a 
-                      href={info.href}
-                      className="flex items-center space-x-4 group"
+                  <FadeIn key={info.label} delay={index * 0.1} direction="right">
+                    <Card 
+                      className="p-4 glass border-gradient hover:shadow-md hover:scale-[1.02] transition-all duration-300 group"
                     >
-                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                        <Icon className="h-6 w-6 text-primary" />
-                      </div>
-                      <div>
-                        <p className="font-semibold group-hover:text-primary transition-fast">
-                          {info.label}
-                        </p>
-                        <p className="text-muted-foreground">{info.value}</p>
-                      </div>
-                    </a>
-                  </Card>
+                      <a 
+                        href={info.href}
+                        className="flex items-center space-x-4 group"
+                      >
+                        <div className="w-12 h-12 bg-teal-500/10 rounded-xl flex items-center justify-center group-hover:bg-teal-500/20 transition-colors">
+                          <Icon className="h-5 w-5 text-teal-500" />
+                        </div>
+                        <div>
+                          <p className="font-semibold text-card-foreground group-hover:text-teal-500 transition-colors">
+                            {info.label}
+                          </p>
+                          <p className="text-sm text-muted-foreground">{info.value}</p>
+                        </div>
+                      </a>
+                    </Card>
+                  </FadeIn>
                 );
               })}
             </div>
 
             {/* Social Links */}
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Connect on Social</h4>
-              <div className="flex space-x-4">
-                {socialLinks.map((social) => {
-                  const Icon = social.icon;
-                  return (
+            <div className="grid grid-cols-2 gap-4">
+              {socialLinks.map((social, index) => {
+                const Icon = social.icon;
+                return (
+                  <FadeIn key={social.label} delay={0.3 + (index * 0.1)} direction="right">
                     <Card 
-                      key={social.label} 
-                      className="p-4 hover-lift transition-smooth bg-white dark:bg-gray-900 border border-border"
+                      className="p-4 glass border-gradient hover:shadow-md hover:scale-[1.05] transition-all duration-300 h-full group"
                     >
                       <a 
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center space-x-3 group"
+                        className="flex flex-col items-center text-center space-y-2 group"
                       >
-                        <Icon className="h-5 w-5 text-primary" />
+                        <Icon className="h-6 w-6 text-muted-foreground group-hover:text-teal-500 transition-colors" />
                         <div>
-                          <p className="font-medium text-sm group-hover:text-primary transition-fast">
+                          <p className="font-medium text-sm text-card-foreground group-hover:text-teal-500 transition-colors">
                             {social.label}
                           </p>
                           <p className="text-xs text-muted-foreground">{social.username}</p>
                         </div>
                       </a>
                     </Card>
-                  );
-                })}
-              </div>
+                  </FadeIn>
+                );
+              })}
             </div>
 
-            {/* Download CV */}
-            <Card className="p-6 bg-gradient-to-r from-orange-400 to-orange-500 text-white dark:from-orange-600 dark:to-orange-700">
-              <div className="text-center">
-                <h4 className="text-lg font-semibold mb-3">
-                  Interested in my background?
-                </h4>
-                <p className="mb-4 text-sm">
-                  Download my detailed resume for a comprehensive overview
-                </p>
-                <Button 
-                  variant="secondary" 
-                  className="bg-white text-orange-600 hover:bg-gray-100"
-                  asChild
-                >
-                  <a href="/resume.pdf" download>
-                    <Download className="mr-2 h-4 w-4" />
-                    Download Resume
-                  </a>
-                </Button>
-              </div>
-            </Card>
+            {/* View Resume CTA */}
+            <FadeIn delay={0.5} direction="up">
+              <Card className="p-6 glass border-gradient shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+                <div className="flex items-start gap-4 relative z-10">
+                  <div className="w-12 h-12 rounded-xl bg-teal-500/10 flex items-center justify-center shrink-0">
+                    <FileText className="h-6 w-6 text-teal-500" />
+                  </div>
+                  <div>
+                    <h4 className="text-base font-semibold mb-1 text-card-foreground">
+                      Detailed Overview
+                    </h4>
+                    <p className="mb-4 text-sm text-muted-foreground">
+                      View my comprehensive resume for a deep dive into my experience.
+                    </p>
+                    <Button 
+                      variant="outline" 
+                      className="w-full bg-background hover:bg-teal-500/5 hover:text-teal-500 hover:border-teal-500/50 transition-colors"
+                      onClick={() => setIsResumeModalOpen(true)}
+                    >
+                      <Eye className="mr-2 h-4 w-4" />
+                      Preview Resume
+                    </Button>
+                  </div>
+                </div>
+              </Card>
+            </FadeIn>
           </div>
 
           {/* Contact Form */}
-          <Card className="p-8 bg-white dark:bg-gray-900 border border-border">
-            <h3 className="text-2xl font-heading font-semibold mb-6">Send a Message</h3>
-            
-            <form className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Name</Label>
-                  <Input id="name" placeholder="Your full name" />
+          <div className="lg:col-span-7">
+            <FadeIn direction="left" delay={0.2}>
+              <Card className="p-8 glass border-gradient shadow-xl h-full relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-teal-500/5 rounded-bl-full -z-10"></div>
+                <h3 className="text-2xl font-bold mb-6 text-foreground relative z-10">Send a Message</h3>
+                
+                <form 
+                  className="space-y-6 relative z-10"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    const formData = new FormData(e.currentTarget);
+                    const name = formData.get('name') as string;
+                    const email = formData.get('email') as string;
+                    const subject = formData.get('subject') as string;
+                    const message = formData.get('message') as string;
+
+                    const mailtoLink = `mailto:aryanraj190223@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Contact')}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`)}`;
+                    window.location.href = mailtoLink;
+                  }}
+                >
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                      <Label htmlFor="name" className="text-muted-foreground">Name</Label>
+                      <Input id="name" name="name" required placeholder="Your full name" className="bg-background/50 border-border/50 focus:border-teal-500/50 focus:ring-teal-500/20 transition-all" />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="email" className="text-muted-foreground">Email</Label>
+                      <Input id="email" name="email" type="email" required placeholder="your.email@example.com" className="bg-background/50 border-border/50 focus:border-teal-500/50 focus:ring-teal-500/20 transition-all" />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="subject" className="text-muted-foreground">Subject</Label>
+                    <Input id="subject" name="subject" required placeholder="What's this about?" className="bg-background/50 border-border/50 focus:border-teal-500/50 focus:ring-teal-500/20 transition-all" />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="message" className="text-muted-foreground">Message</Label>
+                    <Textarea 
+                      id="message" 
+                      name="message"
+                      required
+                      placeholder="Tell me more about your project or inquiry..."
+                      rows={6}
+                      className="bg-background/50 border-border/50 focus:border-teal-500/50 focus:ring-teal-500/20 transition-all resize-none"
+                    />
+                  </div>
+
+                  <Button type="submit" size="lg" className="w-full shadow-sm hover:shadow-md transition-all bg-teal-500 hover:bg-teal-600 text-white border-0 group">
+                    <Send className="mr-2 h-4 w-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    Send Message
+                  </Button>
+                </form>
+
+                <div className="mt-8 pt-6 border-t border-border/50">
+                  <p className="text-sm text-muted-foreground text-center">
+                    I typically respond within 24 hours. Looking forward to hearing from you!
+                  </p>
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="your.email@example.com" />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="subject">Subject</Label>
-                <Input id="subject" placeholder="What's this about?" />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="message">Message</Label>
-                <Textarea 
-                  id="message" 
-                  placeholder="Tell me more about your project or inquiry..."
-                  rows={6}
-                />
-              </div>
-
-              <Button type="submit" size="lg" className="w-full bg-gradient-to-r from-primary to-purple-500 hover:shadow-glow transition-smooth text-white">
-                <Send className="mr-2 h-5 w-5" />
-                Send Message
-              </Button>
-            </form>
-
-            <div className="mt-8 pt-6 border-t border-border">
-              <p className="text-sm text-muted-foreground text-center">
-                I typically respond within 24 hours. Looking forward to hearing from you!
-              </p>
-            </div>
-          </Card>
+              </Card>
+            </FadeIn>
+          </div>
         </div>
       </div>
+      
+      <ResumeModal 
+        isOpen={isResumeModalOpen} 
+        onClose={() => setIsResumeModalOpen(false)} 
+      />
     </section>
   );
 };
