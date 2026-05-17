@@ -10,7 +10,7 @@ const Hero = () => {
   return (
     <section className="min-h-screen flex flex-col justify-center relative pt-32 pb-16 overflow-hidden w-full" id="about">
       <AmbientBackground variant="hero" />
-      
+
       {/* Premium Background Typography Watermark */}
       <div className="absolute top-[10%] md:top-[15%] left-1/2 -translate-x-1/2 w-full max-w-[100vw] flex justify-center pointer-events-none select-none z-0">
         <div className="relative">
@@ -19,7 +19,7 @@ const Hero = () => {
             <div className="text-[12vw] md:text-[14vw] lg:text-[16vw] font-black tracking-tighter leading-none text-transparent bg-clip-text bg-gradient-to-b from-foreground/[0.15] via-foreground/[0.06] to-transparent dark:from-foreground/[0.12] dark:via-foreground/[0.04] dark:to-transparent blur-[1px] opacity-90 whitespace-nowrap px-4">
               Developer
             </div>
-            
+
             {/* Ambient Glow Behind Text */}
             <div className="absolute inset-0 bg-gradient-to-tr from-teal-500/10 via-purple-500/10 to-transparent blur-[60px] -z-10 animate-pulse-glow"></div>
           </div>
@@ -27,13 +27,13 @@ const Hero = () => {
       </div>
 
       <div className="w-full max-w-[1400px] mx-auto px-4 sm:px-6 relative z-10 flex flex-col items-center justify-center flex-1">
-        
+
         {/* Profile Image with 3-Color Glowing Gradients */}
         <div className="relative w-48 h-48 md:w-56 md:h-56 mb-8 group animate-float cursor-pointer" onClick={() => setIsResumeModalOpen(true)}>
           {/* Subtle but amuse effects: glowing orbs */}
           <div className="absolute -inset-6 bg-gradient-to-r from-purple-500 via-teal-400 to-amber-500 rounded-full blur-2xl opacity-40 group-hover:opacity-70 transition-opacity duration-700 animate-pulse"></div>
           <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/30 to-teal-400/30 rounded-full animate-spin-slow"></div>
-          
+
           <div className="w-full h-full rounded-full overflow-hidden border-[6px] border-background shadow-2xl relative z-10 bg-muted/20 transform transition-transform duration-500 group-hover:scale-105">
             <img
               src="/My_Photos/Aryan Raj formal Pic.png"
@@ -48,13 +48,13 @@ const Hero = () => {
           <p className="text-lg md:text-xl font-medium text-muted-foreground mb-4">
             Hey There, <span className="inline-block animate-wave origin-bottom-right">👋</span>
           </p>
-          
+
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-6 text-foreground">
             I'm Aryan Raj
           </h1>
 
           <p className="text-lg sm:text-xl md:text-2xl font-medium text-muted-foreground mb-6 leading-relaxed">
-            4th Year Computer Science & Engineering Student at <br className="hidden md:block" />
+            Final Year Computer Science & Engineering Student at <br className="hidden md:block" />
             <span className="text-teal-500 font-bold">Chandigarh Engineering College, CGC-Landran</span>
           </p>
 
