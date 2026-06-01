@@ -1,16 +1,12 @@
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Calendar, MapPin, Briefcase, ChevronRight, ChevronDown, CheckCircle2, Trophy, Star, Target, Zap } from 'lucide-react';
+import { Calendar, Briefcase, Zap } from 'lucide-react';
 import { FadeIn } from './ui/fade-in';
 import AmbientBackground from './AmbientBackground';
-import { useState } from 'react';
 
 const ExperienceCard = ({ exp, index }: { exp: any, index: number }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
   return (
-    <div className="relative flex flex-col md:flex-row gap-6 md:gap-12 group">
+    <div className="relative flex flex-col md:flex-row gap-6 md:gap-10 group">
       {/* Timeline Dot & Logo */}
       <div className="hidden md:flex flex-col items-center z-10 mt-2">
         <div className="w-16 h-16 rounded-2xl glass border-border shadow-sm flex items-center justify-center text-2xl font-bold text-teal-500 group-hover:border-teal-500/50 group-hover:scale-110 transition-all duration-300">
@@ -45,102 +41,31 @@ const ExperienceCard = ({ exp, index }: { exp: any, index: number }) => {
           </div>
         </div>
 
-        <p className="text-muted-foreground mb-6 leading-relaxed relative z-10 text-base md:text-lg">
+        <p className="text-muted-foreground mb-6 leading-relaxed relative z-10 text-base">
           {exp.description}
         </p>
 
-        {/* Achievement Highlights (Visual Block) */}
-        {exp.achievement && (
-          <div className="mb-6 relative z-10 bg-gradient-to-br from-amber-500/10 to-orange-500/5 border border-amber-500/20 rounded-xl p-5 shadow-sm">
-            <h4 className="flex items-center gap-2 font-bold text-amber-500 mb-3 text-sm uppercase tracking-wider">
-              {exp.achievementIcon || <Trophy className="w-5 h-5" />}
-              Achievement Highlight
-            </h4>
-            {typeof exp.achievement === 'string' ? (
-              <p className="text-foreground font-medium">{exp.achievement}</p>
-            ) : (
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {exp.achievement.map((ach: string, i: number) => (
-                  <li key={i} className="flex items-start gap-2 text-sm font-medium text-foreground">
-                    <Star className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
-                    {ach}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        )}
-
-        {/* Skills & Tools */}
+        {/* Highlights */}
         <div className="mb-6 relative z-10">
-          <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-3">Skills & Tools</h4>
-          <div className="flex flex-wrap gap-2">
-            {exp.skills.map((skill: string) => (
-              <Badge key={skill} variant="secondary" className="bg-muted/50 hover:bg-muted text-muted-foreground px-3 py-1 font-medium transition-colors">
-                {skill}
-              </Badge>
+          <ul className="space-y-2">
+            {exp.highlights.map((highlight: string, idx: number) => (
+              <li key={idx} className="flex items-start text-sm text-foreground/80 font-medium">
+                <span className="w-1.5 h-1.5 bg-teal-500/70 rounded-full mr-3 mt-1.5 flex-shrink-0 shadow-[0_0_4px_rgba(20,184,166,0.5)]"></span>
+                <span className="leading-relaxed">{highlight}</span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
 
-        {/* Badge Tags (Categorized) */}
-        <div className="flex flex-wrap gap-2 mb-2 relative z-10">
-          {exp.badgeTags.map((tag: string) => (
+        {/* Tags */}
+        <div className="flex flex-wrap gap-2 relative z-10 pt-4 border-t border-white/5">
+          {exp.tags.map((tag: string) => (
             <Badge key={tag} variant="outline" className="bg-teal-500/5 text-teal-400 border-teal-500/20 px-3 py-1 font-semibold">
               <Zap className="w-3 h-3 mr-1.5 inline" />
               {tag}
             </Badge>
           ))}
         </div>
-
-        {/* Expandable Responsibilities Section */}
-        <div className={`space-y-6 relative z-10 overflow-hidden transition-all duration-500 ease-in-out ${isExpanded ? 'max-h-[1000px] opacity-100 mt-6' : 'max-h-0 opacity-0'}`}>
-          <div className="pt-6 border-t border-white/5">
-            <h4 className="text-sm font-bold text-card-foreground uppercase tracking-wider mb-4 flex items-center">
-              <Target className="w-4 h-4 mr-2 text-teal-500" />
-              Key Responsibilities
-            </h4>
-            <div className="space-y-3">
-              {exp.responsibilities?.map((resp: string, idx: number) => (
-                <div key={idx} className="flex items-start text-sm md:text-base text-muted-foreground">
-                  <CheckCircle2 className="h-5 w-5 text-teal-500/70 shrink-0 mr-3 mt-0.5" />
-                  <span className="leading-relaxed">{resp}</span>
-                </div>
-              ))}
-            </div>
-            
-            {exp.keyContributions && (
-              <div className="mt-6">
-                 <h4 className="text-sm font-bold text-card-foreground uppercase tracking-wider mb-3 flex items-center">
-                  <Briefcase className="w-4 h-4 mr-2 text-purple-400" />
-                  Key Contributions (Client Projects)
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {exp.keyContributions.map((proj: string) => (
-                    <Badge key={proj} variant="outline" className="bg-purple-500/5 text-purple-400 border-purple-500/20 px-3 py-1">
-                      {proj}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Toggle Button */}
-        {exp.responsibilities && exp.responsibilities.length > 0 && (
-          <div className="mt-6 relative z-10 flex justify-center border-t border-white/5 pt-5">
-            <Button 
-              variant="ghost" 
-              size="sm"
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="text-muted-foreground hover:text-teal-400 hover:bg-teal-500/10 transition-colors w-full sm:w-auto font-semibold tracking-wide"
-            >
-              {isExpanded ? 'Hide Details' : 'View Responsibilities'}
-              <ChevronDown className={`ml-2 h-4 w-4 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />
-            </Button>
-          </div>
-        )}
       </Card>
     </div>
   );
@@ -149,49 +74,48 @@ const ExperienceCard = ({ exp, index }: { exp: any, index: number }) => {
 const Experience = () => {
   const experiences = [
     {
+      company: 'Klimb.io',
+      role: 'Product Manager',
+      duration: 'Dec 2025 – Present',
+      description: 'Worked on enterprise HR-tech products, coordinating execution, testing, and workflow optimization across multiple platforms.',
+      highlights: [
+        'Collaborated with cross-functional teams for product delivery.',
+        'Worked on HRMS, HRIS, AI Interviewer, and AI Scheduler platforms.',
+        'Conducted smoke testing and feature validation before releases.',
+        'Coordinated sprint execution and workflow improvements.',
+        'Contributed usability-focused enhancements and product optimization.'
+      ],
+      tags: ['Product Management', 'HR-Tech', 'AI Interviewer', 'HRMS', 'HRIS', 'Sprint Coordination'],
+      logo: 'K'
+    },
+    {
       company: 'InnoCrede Solutions',
       role: 'Full Stack Engineer Intern',
-      duration: 'May 2025 - Dec 2025',
-      description: 'Worked on real-world client products involving full-stack development, requirement gathering, workflow structuring, UI development, testing, and product execution.',
-      responsibilities: [
-        'Conducted 10+ client requirement gathering sessions and translated business needs into structured workflows and wireframes.',
-        'Collaborated directly with clients to understand product requirements and business goals.',
-        'Delivered front-end modules for 3 client products ahead of schedule.',
-        'Participated in backend support, workflow implementation, and dashboard-related development.',
-        'Worked alongside designers and developers to transform business ideas into actionable implementation plans.',
-        'Contributed to feature planning, UI development, testing, and product delivery processes.',
-        'Assisted in smoke testing, acceptance validation, and usability verification.',
-        'Participated in workflow optimization discussions and implementation strategies.'
+      duration: 'May 2025 – Dec 2025',
+      description: 'Worked on real-world client products involving requirement gathering, workflow design, frontend/backend development, testing, and product execution.',
+      highlights: [
+        'Conducted 10+ client requirement gathering sessions.',
+        'Converted business requirements into workflows and wireframes.',
+        'Delivered frontend modules for 3 client products.',
+        'Contributed to backend support, testing, and product delivery.',
+        'Collaborated with clients, designers, and developers throughout execution.'
       ],
-      achievement: [
-        'Client Collaboration: 10+ Requirement Sessions',
-        'Workflow Design & Structuring',
-        'Product Execution: 3 Client Products Delivered',
-        'Full Product Lifecycle Exposure'
-      ],
-      achievementIcon: <Target className="w-5 h-5" />,
-      skills: ['React', 'JavaScript', 'Tailwind CSS', 'Frontend Development', 'Backend Support', 'Workflow Design', 'Wireframing', 'Product Execution', 'Testing & Validation'],
-      badgeTags: ['Full Stack Development', 'Client Collaboration', 'Workflow Design', 'Product Execution', 'Testing & Validation'],
-      keyContributions: ['CHD State', 'Flash Mins', 'Diamond 11'],
+      tags: ['Full Stack', 'React', 'Workflow Design', 'Client Collaboration', 'Testing'],
       logo: 'I'
     },
     {
       company: 'Make360',
       role: 'Technical Training & Development Intern',
-      duration: 'May 2024 - Aug 2024',
-      description: 'Contributed to technical training, web development education, digital learning initiatives, and student professional development programs while collaborating with mentors and industry professionals.',
-      responsibilities: [
-        'Assisted in delivering training programs focused on Web Development, SEO, Database Fundamentals, and Professional Development.',
-        'Supported website management and UI/UX enhancement initiatives.',
-        'Contributed to digital learning programs to improve student learning experiences.',
-        'Guided students in resume building, interview preparation, and career readiness activities.',
-        'Collaborated with mentors and teams to organize workshops, training sessions, and internship opportunities.',
-        'Assisted in student engagement, communication, networking, and professional development initiatives.'
+      duration: 'Aug 2024 – May 2025',
+      description: 'Contributed to technical training initiatives focused on web development, SEO, databases, and professional skill development while supporting student learning and career readiness programs.',
+      highlights: [
+        'Assisted in delivering web development, SEO, and database training sessions.',
+        'Supported website management and UI/UX improvement initiatives.',
+        'Guided students in resume building and interview preparation.',
+        'Collaborated in workshops, training sessions, and internship programs.',
+        'Ranked 1st among 150+ participants and received the Super Achiever Award.'
       ],
-      achievement: '🏆 Super Achiever Award: Ranked 1st among 150+ participants for outstanding performance, contribution, and leadership during the internship program.',
-      achievementIcon: <Trophy className="w-5 h-5 text-yellow-500" />,
-      skills: ['Web Development', 'SEO', 'UI/UX', 'Student Mentorship', 'Communication', 'Professional Development', 'Training & Workshops'],
-      badgeTags: ['Super Achiever Award', 'Top Performer', 'Training & Development', 'Web Development', 'SEO'],
+      tags: ['Web Development', 'SEO', 'Training', 'UI/UX', 'Professional Development'],
       logo: 'M'
     }
   ];

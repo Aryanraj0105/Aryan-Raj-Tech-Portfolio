@@ -7,14 +7,14 @@ import AmbientBackground from './AmbientBackground';
 const Skills = () => {
   const skillCategories = [
     {
-      title: 'Frontend Development',
+      title: 'Frontend',
       icon: LayoutTemplate,
-      skills: ['React', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind']
+      skills: ['React', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS']
     },
     {
-      title: 'Backend Development',
+      title: 'Backend',
       icon: Server,
-      skills: ['Express', 'REST APIs', 'Node.js']
+      skills: ['Node.js', 'Express.js', 'FastAPI']
     },
     {
       title: 'Databases',
@@ -22,19 +22,19 @@ const Skills = () => {
       skills: ['MongoDB', 'MySQL', 'Firebase']
     },
     {
-      title: 'Product & Workflow Tools',
-      icon: Workflow,
-      skills: ['Jira', 'Mixpanel', 'Google Analytics', 'Miro']
-    },
-    {
-      title: 'Development Tools',
-      icon: PenTool,
-      skills: ['GitHub', 'Postman', 'Figma', 'VS Code']
-    },
-    {
-      title: 'Core Engineering Concepts',
+      title: 'AI & GenAI',
       icon: Lightbulb,
-      skills: ['SDLC', 'Agile/Scrum', 'System Architecture', 'UI/UX Principles']
+      skills: ['OpenAI', 'RAG', 'Flowise', 'Prompt Engineering', 'Vector Databases', 'OpenAI Embeddings']
+    },
+    {
+      title: 'Product & Engineering',
+      icon: Workflow,
+      skills: ['Agile/Scrum', 'SDLC', 'REST APIs', 'Product Workflows', 'Requirement Gathering', 'Wireframing', 'Smoke Testing', 'Acceptance Testing']
+    },
+    {
+      title: 'Tools',
+      icon: PenTool,
+      skills: ['Git/GitHub', 'Jira', 'Postman', 'Figma', 'Miro', 'Google Analytics', 'Mixpanel', 'VS Code']
     }
   ];
 
