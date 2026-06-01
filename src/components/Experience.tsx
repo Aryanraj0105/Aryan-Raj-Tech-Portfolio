@@ -104,7 +104,7 @@ const Experience = () => {
       logo: 'I'
     },
     {
-      company: 'Make360',
+      company: 'Makes360',
       role: 'Technical Training & Development Intern',
       duration: 'Aug 2024 – May 2025',
       description: 'Contributed to technical training initiatives focused on web development, SEO, databases, and professional skill development while supporting student learning and career readiness programs.',
