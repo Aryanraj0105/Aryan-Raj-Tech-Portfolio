@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ChevronRight, ChevronDown, CheckCircle2, Layers, Workflow, TestTubes, Briefcase, LayoutGrid } from 'lucide-react';
+import { ChevronRight, ChevronDown, CheckCircle2, Layers, Workflow, Briefcase, LayoutGrid } from 'lucide-react';
 import { FadeIn } from './ui/fade-in';
 import AmbientBackground from './AmbientBackground';
 
@@ -188,6 +188,8 @@ const CompanyCard = ({ company, index }: { company: Company, index: number }) =>
 };
 
 const ProductContributions = () => {
+  const [showMore, setShowMore] = useState(false);
+
   const companies: Company[] = [
     {
       name: 'Trinamix Systems Private Limited',
@@ -283,22 +285,70 @@ const ProductContributions = () => {
       ]
     },
     {
+      name: 'Klimb.io',
+      role: 'Product Manager – AI Products',
+      overview: 'Worked on enterprise HR-tech platforms focused on workflow execution, AI-based hiring systems, payroll operations, interview automation, and operational HR process management.',
+      generalResponsibilities: [
+        'Cross-functional collaboration',
+        'Product execution coordination',
+        'Sprint coordination',
+        'Workflow optimization',
+        'Smoke testing',
+        'Acceptance validation',
+        'Feature verification',
+        'Product usability improvements'
+      ],
+      products: [
+        {
+          name: 'AI Interviewer',
+          category: 'AI-Based Hiring Platform',
+          description: 'AI-powered interview platform designed for automated hiring workflows and candidate assessment systems.',
+          features: ['MCQ test system', 'Coding assessments', 'AI interview workflows', 'Candidate evaluation process'],
+          contributions: ['Product workflow coordination', 'Testing and validation', 'Interview flow verification', 'Feature execution support', 'Workflow optimization suggestions', 'Acceptance testing', 'Usability-focused checks'],
+          techFocus: ['AI hiring workflows', 'Coding assessments', 'Interview systems', 'Workflow execution', 'Product testing']
+        },
+        {
+          name: 'AI Scheduler',
+          category: 'Interview Scheduling Platform',
+          description: 'Bulk scheduling platform designed to automate interview coordination and assignment workflows.',
+          features: ['Bulk scheduling', 'Automated assignment workflows', 'Scheduling coordination', 'Interview management systems'],
+          contributions: ['Workflow coordination', 'Execution planning support', 'Product validation', 'Smoke testing', 'Scheduling workflow understanding', 'Feature verification'],
+          techFocus: ['Scheduling systems', 'Automation workflows', 'Product execution', 'Testing workflows']
+        },
+        {
+          name: 'AI Assessment Platform',
+          category: 'Candidate Evaluation System',
+          description: 'Platform designed for robust candidate evaluation with automated workflows and AI-driven insights.',
+          features: ['Automated workflows', 'AI-driven insights', 'Candidate evaluation', 'Assessment systems'],
+          contributions: ['Workflow coordination', 'Testing and validation', 'Product usability', 'Feature verification'],
+          techFocus: ['AI Assessment', 'Evaluation Systems', 'Product Testing']
+        },
+        {
+          name: 'HRMS & HRIS',
+          category: 'Enterprise HR-Tech Platform',
+          description: 'Enterprise workforce management and HR operations platform handling employee workflows, payroll systems, KPI/KRA tracking, and operational HR processes.',
+          features: ['Payroll systems', 'KPI/KRA workflows', 'Employee management', 'Goal tracking systems', 'HR operational workflows'],
+          contributions: ['Workflow execution coordination', 'Product usability validation', 'Feature verification', 'Sprint collaboration', 'Smoke testing', 'Acceptance testing', 'Operational workflow understanding', 'Product coordination support'],
+          techFocus: ['Enterprise workflows', 'Payroll systems', 'HR operations', 'KPI/KRA systems', 'Product validation']
+        }
+      ]
+    },
+    {
       name: 'InnoCrede Solutions',
       role: 'Technical Product Manager & Full-Stack Developer Intern',
-      overview: 'Contributed to real-world client applications by working across frontend development, backend support, UI/UX improvements, database integration, and product execution. Leveraged AI-assisted development tools to improve design decisions, accelerate implementation, and enhance overall user experience while collaborating closely with engineering and product teams.',
+      overview: 'Contributed to real-world client applications across frontend development, backend support, UI/UX improvements, dashboard development, database integration, and product execution. Leveraged AI-assisted development tools for design ideation, interface improvements, and productivity while collaborating with engineering and product teams.',
       generalResponsibilities: [
         'Full-Stack Development',
         'Frontend Development',
         'Backend Development',
         'UI/UX Design',
         'Responsive Design',
+        'Dashboard Development',
         'Database Integration',
-        'Workflow Optimization',
-        'Requirement Analysis',
         'Product Execution',
         'Software Testing',
         'Acceptance Validation',
-        'Dashboard Development',
+        'Workflow Optimization',
         'AI-assisted Development',
         'Cross-functional Collaboration'
       ],
@@ -392,12 +442,39 @@ const ProductContributions = () => {
           </div>
         </FadeIn>
 
-        <div className="max-w-[1200px] mx-auto space-y-12">
-          {companies.map((company, index) => (
-            <FadeIn key={index} delay={index * 0.2} direction="up">
+        <div className="max-w-[1200px] mx-auto flex flex-col gap-12">
+          {companies.slice(0, 2).map((company, index) => (
+            <FadeIn key={company.name} delay={index * 0.2} direction="up">
               <CompanyCard company={company} index={index} />
             </FadeIn>
           ))}
+          
+          <div className={`grid transition-all duration-700 ease-in-out ${showMore ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+            <div className="overflow-hidden">
+              <div className="flex flex-col gap-12 pt-1">
+                {companies.slice(2).map((company, index) => (
+                  <CompanyCard key={company.name} company={company} index={index + 2} />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="flex justify-center mt-4">
+            <button
+              onClick={() => setShowMore(!showMore)}
+              className="flex items-center gap-2 px-6 py-3 rounded-full bg-teal-500/10 text-teal-400 font-semibold hover:bg-teal-500/20 transition-all border border-teal-500/20 hover:border-teal-500/40"
+            >
+              {showMore ? (
+                <>
+                  <span className="text-[10px] leading-none">▲</span> Show Less
+                </>
+              ) : (
+                <>
+                  <span className="text-[10px] leading-none">▼</span> Show More
+                </>
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </section>
