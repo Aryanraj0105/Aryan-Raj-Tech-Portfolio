@@ -285,116 +285,92 @@ const ProductContributions = () => {
     {
       name: 'InnoCrede Solutions',
       role: 'Technical Product Manager & Full-Stack Developer Intern',
-      overview: 'Worked on real-world client products involving frontend/backend contribution, workflow structuring, dashboard systems, database handling, product execution, testing, and operational workflow optimization.',
+      overview: 'Contributed to real-world client applications by working across frontend development, backend support, UI/UX improvements, database integration, and product execution. Leveraged AI-assisted development tools to improve design decisions, accelerate implementation, and enhance overall user experience while collaborating closely with engineering and product teams.',
       generalResponsibilities: [
-        'Requirement gathering',
-        'Workflow structuring',
-        'Frontend contribution',
-        'Backend support',
-        'Database handling',
-        'Dashboard systems',
-        'Wireframing',
-        'Product execution',
-        'Smoke testing',
-        'Acceptance validation'
+        'Full-Stack Development',
+        'Frontend Development',
+        'Backend Development',
+        'UI/UX Design',
+        'Responsive Design',
+        'Database Integration',
+        'Workflow Optimization',
+        'Requirement Analysis',
+        'Product Execution',
+        'Software Testing',
+        'Acceptance Validation',
+        'Dashboard Development',
+        'AI-assisted Development',
+        'Cross-functional Collaboration'
       ],
       products: [
         {
           name: 'CHD State',
-          category: 'E-Commerce / Gymwear Platform',
+          category: 'E-Commerce & Gymwear Platform',
           link: 'https://www.chdstate.com/',
-          description: 'Modern e-commerce platform focused on gymwear and lifestyle apparel with operational dashboard workflows and scalable product management systems.',
+          description: 'Contributed to frontend development, UI/UX improvements, responsive interface implementation, and feature development for an e-commerce platform. Used AI-assisted development tools to explore design improvements, optimize user experience, and accelerate development while collaborating with the engineering team.',
           features: [
-            'Product management dashboard',
-            'Order workflows',
-            'User interaction systems',
-            'Admin operations'
+            'Responsive interface implementation',
+            'UI/UX design exploration',
+            'E-commerce feature development',
+            'AI-assisted development processes'
           ],
           contributions: [
-            'Frontend development',
-            'Backend support',
-            'Database handling',
-            'Dashboard workflow support',
-            'SRS documentation assistance',
-            'Wireframing',
-            'UI/UX contribution',
-            'Smoke testing',
-            'Acceptance validation',
-            'Workflow optimization suggestions',
-            'Stakeholder collaboration during implementation'
+            'Frontend development execution',
+            'UI/UX improvement suggestions',
+            'Feature implementation',
+            'Productivity enhancement via AI tools'
           ],
           techFocus: [
-            'Full-stack contribution',
-            'Dashboard systems',
-            'Product workflows',
-            'E-commerce operations',
-            'Database handling',
-            'UI/UX systems',
-            'Product validation'
+            'Frontend Development',
+            'UI/UX Design',
+            'AI-Assisted Workflows',
+            'E-Commerce'
           ]
         },
         {
           name: 'Flash Mins',
           category: 'Hyperlocal Delivery Platform',
-          description: 'Hyperlocal commerce and delivery platform designed for food businesses and rapid operational workflows.',
+          description: 'Worked on frontend implementation, workflow optimization, dashboard improvements, and product execution for a hyperlocal delivery platform. Collaborated on feature implementation, testing, and usability enhancements to improve the overall customer experience.',
           features: [
-            'Delivery workflows',
-            'Operational dashboards',
-            'Commerce management',
-            'User order systems'
+            'Frontend implementation',
+            'Dashboard improvements',
+            'Operational workflow optimization',
+            'Usability enhancements'
           ],
           contributions: [
-            'Workflow structuring',
-            'Frontend/backend support',
-            'Database-related contribution',
-            'Dashboard workflow understanding',
-            'Product execution support',
-            'Feature validation',
-            'Smoke testing',
-            'Workflow optimization suggestions'
+            'Frontend feature execution',
+            'Workflow testing',
+            'Dashboard implementation support',
+            'Usability testing'
           ],
           techFocus: [
-            'Hyperlocal commerce systems',
-            'Delivery workflows',
-            'Dashboard systems',
-            'Backend support',
-            'Database operations',
-            'Workflow execution'
+            'Frontend Development',
+            'Dashboard Systems',
+            'Workflow Optimization',
+            'Product Execution'
           ]
         },
         {
           name: 'Diamond 11',
-          category: 'Fantasy Gaming Platform',
-          description: 'Fantasy gaming platform focused on competitive engagement, user interaction workflows, and scalable gaming operations.',
+          category: 'Fantasy Sports Platform',
+          description: 'Contributed to frontend development, interface improvements, backend coordination, software testing, and feature validation while helping deliver a scalable and engaging fantasy sports platform.',
           features: [
-            'Fantasy gameplay workflows',
-            'User engagement systems',
-            'Gaming dashboards',
-            'Reward/interaction systems',
-            'Competitive gaming flows'
+            'Interface improvements',
+            'Frontend implementation',
+            'Backend coordination workflows',
+            'Scalable fantasy sports features'
           ],
           contributions: [
-            'Product planning discussions',
-            'Workflow structuring',
-            'Feature ideation support',
-            'Frontend/backend support',
-            'Database handling support',
-            'Gaming interaction workflow discussions',
-            'Product differentiation discussions',
-            'Smoke testing',
-            'Acceptance validation',
-            'Feature verification',
-            'Product execution support'
+            'Frontend development support',
+            'Software testing',
+            'Feature validation',
+            'Backend coordination'
           ],
           techFocus: [
-            'Gaming workflow systems',
-            'Product support',
-            'Full-stack contribution',
-            'Feature planning',
-            'Dashboard systems',
-            'Backend support',
-            'Smoke testing',
-            'Product execution workflows'
+            'Frontend Development',
+            'Software Testing',
+            'Backend Coordination',
+            'Feature Validation'
           ]
         }
       ]

@@ -103,9 +103,9 @@ const Experience = () => {
     },
     {
       company: 'InnoCrede Solutions',
-      role: 'Full Stack Engineer Intern',
+      role: 'Technical Product Manager & Full-Stack Developer Intern',
       duration: 'May 2025 – Dec 2025',
-      description: 'Worked on real-world client products involving requirement gathering, workflow design, frontend/backend development, testing, and product execution.',
+      description: 'Contributed to real-world client applications by working across frontend development, backend support, UI/UX improvements, database integration, and product execution. Leveraged AI-assisted development tools to improve design decisions, accelerate implementation, and enhance overall user experience while collaborating closely with engineering and product teams.',
       highlights: [
         'Conducted 10+ client requirement gathering sessions.',
         'Converted business requirements into workflows and wireframes.',
