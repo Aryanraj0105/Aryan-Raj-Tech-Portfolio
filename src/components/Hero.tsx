@@ -17,7 +17,7 @@ const Hero = () => {
           <div className="animate-in fade-in slide-in-from-left-32 duration-[1500ms] ease-out" style={{ animationDelay: '200ms', animationFillMode: 'both' }}>
             {/* Main Text with Gradient Fill & Depth Blur */}
             <div className="text-[12vw] md:text-[14vw] lg:text-[16vw] font-black tracking-tighter leading-none text-transparent bg-clip-text bg-gradient-to-b from-foreground/[0.15] via-foreground/[0.06] to-transparent dark:from-foreground/[0.12] dark:via-foreground/[0.04] dark:to-transparent blur-[1px] opacity-90 whitespace-nowrap px-4">
-              Developer
+              AI Engineer
             </div>
 
             {/* Ambient Glow Behind Text */}
