@@ -37,8 +37,7 @@ const Footer = () => {
               <span className="font-semibold text-xl tracking-tight">Aryan Raj</span>
             </div>
             <p className="text-muted-foreground mb-8 max-w-sm leading-relaxed">
-              Product Engineer & Full-Stack Developer focused on building scalable, 
-              high-quality applications and seamless user experiences.
+              AI Engineer and Full-Stack Developer passionate about building intelligent applications, ERP solutions, scalable software, and AI-powered systems that solve real-world business challenges.
             </p>
             <div className="flex space-x-3">
               {socialLinks.map((social) => {
