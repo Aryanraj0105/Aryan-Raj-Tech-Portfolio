@@ -8,29 +8,29 @@ const About = () => {
   const philosophies = [
     {
       icon: Target,
-      title: 'Product-Oriented Engineering',
-      description: 'Building features that solve real user problems. I focus on the "why" before the "how" to ensure technical execution aligns with business goals.'
+      title: 'AI Engineering',
+      description: 'Building intelligent applications using Machine Learning, Generative AI, and modern AI frameworks to solve real-world problems through practical, production-ready solutions.'
     },
     {
       icon: Layers,
-      title: 'Full-Stack Execution',
-      description: 'From designing scalable databases to crafting pixel-perfect UI components, I handle the entire development lifecycle with a systems-thinking approach.'
+      title: 'Full-Stack Development',
+      description: 'Experienced in designing and developing responsive web applications using modern frontend and backend technologies with a strong focus on scalability, performance, and clean architecture.'
     },
     {
       icon: Users,
-      title: 'Cross-Functional Collaboration',
-      description: 'Experienced in translating business requirements into technical architectures and working seamlessly with design, marketing, and leadership teams.'
+      title: 'Software Engineering',
+      description: 'Passionate about writing maintainable code, implementing best practices, collaborating on projects, and delivering reliable software through testing, debugging, and continuous improvement.'
     },
     {
       icon: Rocket,
-      title: 'Workflow Optimization',
-      description: 'Passionate about improving team efficiency through automated pipelines, robust testing, and clear requirement gathering.'
+      title: 'Research & Innovation',
+      description: 'Interested in exploring emerging AI technologies, intelligent automation, and innovative software solutions that bridge research with practical industry applications.'
     }
   ];
 
   const focusAreas = [
-    'Front-End Engineering', 'Full-Stack Development', 'Requirement Gathering',
-    'System Architecture', 'Agile/Scrum', 'UI/UX Implementation', 'API Design', 'Performance Optimization'
+    'Artificial Intelligence', 'Full-Stack Development', 'ERP Solutions',
+    'Software Testing', 'REST APIs', 'System Design', 'Database Design', 'Problem Solving', 'Research & Innovation'
   ];
 
   return (
@@ -43,9 +43,7 @@ const About = () => {
               About Me
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-4xl mx-auto">
-              I am a Technical Product-Oriented Engineer with a strong foundation in full-stack development. 
-              My approach to engineering goes beyond writing clean code—I aim to understand the product vision, 
-              optimize workflows, and deliver impactful digital experiences that users love.
+              I am an aspiring AI Engineer and Full-Stack Developer with hands-on experience in building intelligent applications, ERP solutions, and scalable web platforms. I enjoy solving real-world problems through AI, modern software engineering, and continuous learning while creating impactful technology that delivers value.
             </p>
           </div>
         </FadeIn>
@@ -78,7 +76,7 @@ const About = () => {
             <FadeIn delay={0.2} direction="left">
               <Card className="p-6 glass border-gradient shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
                 <h3 className="text-lg font-semibold mb-4 text-card-foreground border-b border-white/5 pb-2 relative z-10">
-                  Core Focus Areas
+                  Core Expertise
                 </h3>
                 <div className="flex flex-wrap gap-2 relative z-10">
                   {focusAreas.map((area) => (
@@ -97,10 +95,10 @@ const About = () => {
             <FadeIn delay={0.3} direction="left">
               <Card className="p-6 glass border-gradient shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
                 <h3 className="text-lg font-semibold mb-4 text-card-foreground border-b border-white/5 pb-2 relative z-10">
-                  The Engineering Process
+                  Development Workflow
                 </h3>
                 <ul className="space-y-3 relative z-10">
-                  {['Requirement Analysis', 'Architecture Design', 'Iterative Development', 'Rigorous Testing', 'Continuous Deployment'].map((step, i) => (
+                  {['Requirement Analysis', 'Solution Design', 'Development', 'Testing & Debugging', 'Deployment & Optimization'].map((step, i) => (
                     <li key={i} className="flex items-center text-sm text-muted-foreground group">
                       <CheckCircle2 className="h-4 w-4 text-teal-500 mr-3 flex-shrink-0 group-hover:scale-110 transition-transform" />
                       {step}
