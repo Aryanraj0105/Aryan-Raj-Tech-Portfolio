@@ -190,99 +190,94 @@ const CompanyCard = ({ company, index }: { company: Company, index: number }) =>
 const ProductContributions = () => {
   const companies: Company[] = [
     {
-      name: 'Klimb.io',
-      role: 'Product Manager',
-      overview: 'Worked on enterprise HR-tech platforms focused on workflow execution, AI-based hiring systems, payroll operations, interview automation, and operational HR process management.',
+      name: 'Trinamix Systems Private Limited',
+      role: 'Systems Engineer – AI Engineering',
+      overview: 'Working on enterprise AI and ERP modernization solutions, contributing to intelligent document conversion, AI-powered backend systems, enterprise automation, software testing, and scalable applications. Due to project confidentiality, only publicly shareable responsibilities are included.',
       generalResponsibilities: [
-        'Cross-functional collaboration',
-        'Product execution coordination',
-        'Sprint coordination',
-        'Workflow optimization',
-        'Smoke testing',
-        'Acceptance validation',
-        'Feature verification',
-        'Product usability improvements'
+        'AI Engineering',
+        'Python Development',
+        'FastAPI Development',
+        'MERN Stack Development',
+        'Enterprise ERP Solutions',
+        'Oracle Fusion Integration',
+        'Excel Data Transformation',
+        'REST API Development',
+        'LLM Integration',
+        'Retrieval-Augmented Generation (RAG)',
+        'Software Testing',
+        'Quality Assurance',
+        'Debugging',
+        'Workflow Automation',
+        'Cross-functional Collaboration'
       ],
       products: [
         {
-          name: 'HRMS & HRIS Systems',
-          category: 'Enterprise HR-Tech Platform',
-          description: 'Enterprise workforce management and HR operations platform handling employee workflows, payroll systems, KPI/KRA tracking, and operational HR processes.',
+          name: 'Enterprise Data Conversion Platform',
+          category: 'Excel-to-Oracle Fusion ERP Transformation',
+          description: 'Contributed to the development of an enterprise conversion platform that transforms structured Excel datasets into Oracle Fusion ERP compatible formats. Responsible for backend implementation, API development, workflow optimization, and testing while ensuring scalability and production readiness.',
           features: [
-            'Payroll systems',
-            'KPI/KRA workflows',
-            'Employee management',
-            'Goal tracking systems',
-            'HR operational workflows'
+            'Structured Excel dataset parsing',
+            'ERP data transformation',
+            'Oracle Fusion format generation',
+            'Scalable conversion pipelines'
           ],
           contributions: [
-            'Workflow execution coordination',
-            'Product usability validation',
-            'Feature verification',
-            'Sprint collaboration',
-            'Smoke testing',
-            'Acceptance testing',
-            'Operational workflow understanding',
-            'Product coordination support'
+            'Backend implementation',
+            'API development',
+            'Workflow optimization',
+            'Testing & production readiness'
           ],
           techFocus: [
-            'Enterprise workflows',
-            'Payroll systems',
-            'HR operations',
-            'KPI/KRA systems',
-            'Product validation'
+            'Python',
+            'Enterprise ERP',
+            'API Integration',
+            'Oracle Fusion'
           ]
         },
         {
-          name: 'AI Interviewer',
-          category: 'AI-Based Hiring Platform',
-          description: 'AI-powered interview platform designed for automated hiring workflows and candidate assessment systems.',
+          name: 'Enterprise AI Backend',
+          category: 'FastAPI • Python • MERN',
+          description: 'Develop enterprise backend services using Python, FastAPI, MERN Stack, and REST APIs. Contribute to AI-assisted workflows, scalable system architecture, debugging, testing, and enterprise software development following modern engineering practices.',
           features: [
-            'MCQ test system',
-            'Coding assessments',
-            'AI interview workflows',
-            'Candidate evaluation process'
+            'Enterprise backend services',
+            'AI-assisted workflows',
+            'Scalable system architecture',
+            'Modern engineering integration'
           ],
           contributions: [
-            'Product workflow coordination',
-            'Testing and validation',
-            'Interview flow verification',
-            'Feature execution support',
-            'Workflow optimization suggestions',
-            'Acceptance testing',
-            'Usability-focused checks'
+            'REST API development',
+            'System debugging',
+            'Automated testing',
+            'Enterprise software development'
           ],
           techFocus: [
-            'AI hiring workflows',
-            'Coding assessments',
-            'Interview systems',
-            'Workflow execution',
-            'Product testing'
+            'FastAPI',
+            'Python',
+            'MERN Stack',
+            'REST APIs'
           ]
         },
         {
-          name: 'AI Scheduler',
-          category: 'Interview Scheduling Platform',
-          description: 'Bulk scheduling platform designed to automate interview coordination and assignment workflows.',
+          name: 'LLM & RAG Integration',
+          category: 'Enterprise Artificial Intelligence',
+          description: 'Contribute to integrating Large Language Models (LLMs) and Retrieval-Augmented Generation (RAG) into enterprise applications to improve intelligent document understanding, contextual information retrieval, and AI-powered automation.',
           features: [
-            'Bulk scheduling',
-            'Automated assignment workflows',
-            'Scheduling coordination',
-            'Interview management systems'
+            'LLM model integration',
+            'Retrieval-Augmented Generation',
+            'Contextual information retrieval',
+            'AI-powered automation workflows'
           ],
           contributions: [
-            'Workflow coordination',
-            'Execution planning support',
-            'Product validation',
-            'Smoke testing',
-            'Scheduling workflow understanding',
-            'Feature verification'
+            'AI integration support',
+            'Intelligent document understanding',
+            'Contextual search execution',
+            'Enterprise AI implementation'
           ],
           techFocus: [
-            'Scheduling systems',
-            'Automation workflows',
-            'Product execution',
-            'Testing workflows'
+            'LLMs',
+            'RAG',
+            'AI Automation',
+            'Intelligent Document Processing'
           ]
         }
       ]
@@ -416,7 +411,7 @@ const ProductContributions = () => {
               Professional Product Contributions
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-              Real-world enterprise product execution, cross-functional engineering, and end-to-end workflow ownership.
+              Enterprise AI engineering contributions focused on intelligent automation, ERP modernization, scalable backend development, and AI-powered enterprise solutions.
             </p>
           </div>
         </FadeIn>
