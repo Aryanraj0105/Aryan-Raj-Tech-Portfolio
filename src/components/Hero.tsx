@@ -53,13 +53,12 @@ const Hero = () => {
             I'm Aryan Raj
           </h1>
 
-          <p className="text-lg sm:text-xl md:text-2xl font-medium text-muted-foreground mb-6 leading-relaxed">
-            Final Year Computer Science & Engineering Student at <br className="hidden md:block" />
-            <span className="text-teal-500 font-bold">Chandigarh Engineering College, CGC-Landran</span>
+          <p className="text-lg sm:text-xl md:text-2xl font-medium text-teal-500 mb-6 leading-relaxed">
+            AI Engineer • Full-Stack Developer • ERP Solutions • Software Testing • Research
           </p>
 
           <p className="text-base sm:text-lg text-muted-foreground/80 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Passionate about creating innovative solutions, conducting cutting-edge research, and building impactful technology that makes a difference.
+            Aspiring AI Engineer with expertise in Full-Stack Development, ERP Solutions, Software Testing, and Applied AI. Passionate about building scalable software, intelligent automation, and real-world technology solutions that create meaningful impact.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
