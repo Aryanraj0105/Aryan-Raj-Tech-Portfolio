@@ -74,9 +74,22 @@ const ExperienceCard = ({ exp, index }: { exp: any, index: number }) => {
 const Experience = () => {
   const experiences = [
     {
+      company: 'Trinamix Systems Private Limited',
+      role: 'Systems Engineer – AI Engineering',
+      duration: 'Jun 2026 – Present',
+      description: 'Building intelligent applications, ERP solutions, and scalable AI-powered systems that solve real-world business challenges.',
+      highlights: [
+        'Developing and deploying AI-driven solutions for enterprise environments.',
+        'Collaborating on system architecture and production-ready deployments.',
+        'Integrating Machine Learning and Generative AI frameworks into existing workflows.'
+      ],
+      tags: ['AI Engineering', 'Machine Learning', 'Generative AI', 'System Architecture', 'ERP Solutions'],
+      logo: 'T'
+    },
+    {
       company: 'Klimb.io',
       role: 'Product Manager',
-      duration: 'Dec 2025 – Present',
+      duration: 'Dec 2025 – Apr 2026',
       description: 'Worked on enterprise HR-tech products, coordinating execution, testing, and workflow optimization across multiple platforms.',
       highlights: [
         'Collaborated with cross-functional teams for product delivery.',
