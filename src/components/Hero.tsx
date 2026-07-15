@@ -36,7 +36,7 @@ const Hero = () => {
 
           <div className="w-full h-full rounded-full overflow-hidden border-[6px] border-background shadow-2xl relative z-10 bg-muted/20 transform transition-transform duration-500 group-hover:scale-105">
             <img
-              src="/My_Photos/Aryan Raj formal Pic.png"
+              src="/My_Photos/profile pic ref 1.png"
               alt="Aryan Raj"
               className="w-full h-full object-cover object-top"
             />
